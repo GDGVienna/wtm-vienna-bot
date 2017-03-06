@@ -1,0 +1,29 @@
+[{
+    "name": "Program",
+    "postback": "event_program",
+    "enabled": true
+}, {
+    "name": "What's next?",
+    "postback": "event_next",
+    "enabled": true
+}, {
+    "name": "What's going on right now?",
+    "postback": "event_now",
+    "enabled": true
+}, {
+    "name": "When is the next break?",
+    "postback": "event_next_break",
+    "enabled": true
+}, {
+    "name": "After party",
+    "postback": "event_after_party",
+    "enabled": true
+}, {
+    "name": "What's next?",
+    "postback": "event_next",
+    "enabled": true
+}, {
+    "name": "About us",
+    "postback": "event_about_us",
+    "enabled": true
+}]

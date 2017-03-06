@@ -1,9 +1,9 @@
 var builder = require('botbuilder');
-var ctrl = require('./internal/ctrl')
+var ctrl = require('./src/ctrl')
 var moment = require('moment');
 var restify = require('restify');
-var text = require("./internal/text.json");
-var utils = require('./internal/utils')
+var text = require("./src/text.json");
+var utils = require('./src/utils')
 
 var server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, function () {
@@ -17,7 +17,22 @@ var connector = new builder.ChatConnector({
 var bot = new builder.UniversalBot(connector, { persistConversationData: true });
 server.post('/api/messages', connector.listen());
 
+bot.beginDialogAction('hi', '/', { matches: /^\bhi\b|\bhello\b|\bhey\b|\bhallo\b/i });
+bot.beginDialogAction('event_program', '/program');
+
 bot.dialog('/', function (session) {
     var msg = "hi";
-    session.send(msg);    
+    session.send(msg);
+    session.sendTyping();
+    session.beginDialog('/menu');
+});
+
+bot.dialog('/menu', function (session) {
+    session.send("how can I help you?");
+    ctrl.sendMenu(session) ;
+    session.endDialog();
+});
+
+bot.dialog('/program', function (session) {
+    ctrl.sendProgram(session);
 });

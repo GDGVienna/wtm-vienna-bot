@@ -1,0 +1,19 @@
+{
+    "hi": "Hi {user}, welcome to Women Techmakers Vienna!",
+    "start": "How can I help you?",
+    "bye": "Thanks for your interest in Women Techmakers Vienna!",
+    "syn": {
+        "yes": ["yes", "sure", "ok"],
+        "no": ["no", "i'm good", "nah"]
+    },  
+    "emoticons": {
+        "robot": "\ud83e\udd16",
+        "search": "\ud83d\udd0e",
+        "earth": "\ud83c\udf0d",
+        "victoryhand": "\u270c",
+        "wavinghand": "\ud83d\udc4b",
+        "thumbsup": "\ud83d\udc4b",
+        "bulb": "\ud83d\udca1",
+        "sweat_smile": "\ud83d\ude04"
+    }
+}
