@@ -25,7 +25,7 @@ exports.sendMenu = function(session) {
                 type: "template",                
                 payload: {
                     template_type: "button",                    
-                    text: "what do you want to do next?",
+                    text: "How can I help you?",
                     buttons: buttons
                 }
             }
@@ -42,10 +42,11 @@ exports.sendMenu = function(session) {
     // session.send(msg);
 }
 
-exports.sendProgram = function() {
+exports.sendProgram = function(session) {
     var elements = [];
-    var program = menu[0];
+    var program = menu[0].items;
     for (var i = 0; i < program.length; i++) {
+        var item = program[i];
         var element = {
             title: item.name,
             image_url: item.image,

@@ -1,6 +1,6 @@
 [{
     "name": "Program",
-    "postback": "program",
+    "postback": "event_program",
     "items": [{
             "name": "Presentations",
             "postback": "presentations",

@@ -16,10 +16,9 @@ var connector = new builder.ChatConnector({
 });
 var bot = new builder.UniversalBot(connector, { persistConversationData: true });
 server.post('/api/messages', connector.listen());
-server.post('/api/program', connector.listen());
 
 bot.beginDialogAction('hi', '/', { matches: /^\bhi\b|\bhello\b|\bhey\b|\bhallo\b/i });
-bot.beginDialogAction('program', '/program');
+bot.beginDialogAction('event_program', '/program', { matches: /^\bprogram\b/i });
 
 bot.dialog('/', function (session) {
     var msg = "hi";
@@ -31,8 +30,11 @@ bot.dialog('/', function (session) {
 bot.dialog('/menu', function (session) {
     session.sendTyping();
     ctrl.sendMenu(session);
+    session.endDialog();
 });
 
 bot.dialog('/program', function (session) {
+    session.sendTyping();
     ctrl.sendProgram(session);
+    session.endDialog();
 });
