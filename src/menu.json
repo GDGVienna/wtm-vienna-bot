@@ -2,22 +2,26 @@
     "name": "Program",
     "postback": "program",
     "items": [{
-            "name": "Presentation",
-            "postback": "presentations"
+            "name": "Presentations",
+            "postback": "presentations",
+            "image": "https://www.womentechmakers.at/img/other/opening.jpg"
         }, {
             "name": "Workshops",
-            "postback": "workshops"
+            "postback": "workshops",
+            "image": "https://www.womentechmakers.at/img/other/lego.jpg"
         }, {
             "name": "Breaks",
-            "postback": "breaks"
+            "postback": "breaks",
+            "image": "https://www.womentechmakers.at/img/other/coffeebreak.jpg"
         }, {
             "name": "Afterparty",
-            "postback": "aftreparty"
+            "postback": "afterparty",
+            "image": "https://www.womentechmakers.at/img/other/party.png"
         }]
 }, {
     "name": "Next",
     "postback": "next"
 }, {
-    "name": "Right now?",
+    "name": "Right now",
     "postback": "now"
 }]

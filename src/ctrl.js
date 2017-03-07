@@ -42,7 +42,38 @@ exports.sendMenu = function(session) {
     // session.send(msg);
 }
 
-exports.sendProgram = function(session) {
+exports.sendProgram = function() {
+    var elements = [];
+    var program = menu[0];
+    for (var i = 0; i < program.length; i++) {
+        var element = {
+            title: item.name,
+            image_url: item.image,
+            buttons: [{
+                title: 'Show',
+                type: 'Postback',
+                payload: item.postback
+            }]
+        };
+        elements.push(element);
+    }
+    var card =  {
+        facebook: {
+            attachment: {
+                type: "template",
+                payload: {
+                    template_type: "list",
+                    top_element_style: "compact",
+                    elements: elements
+                }
+            }
+        }
+    };
+    var msg = new builder.Message(session).sourceEvent(card);
+    session.send(msg);
+}
+
+exports.sendProgram2 = function(session) {
     var elements = [];
     var cards = []
     for (var i = 0; i < program.length; i++) {

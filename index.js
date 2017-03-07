@@ -16,6 +16,7 @@ var connector = new builder.ChatConnector({
 });
 var bot = new builder.UniversalBot(connector, { persistConversationData: true });
 server.post('/api/messages', connector.listen());
+server.post('/api/program', connector.listen());
 
 bot.beginDialogAction('hi', '/', { matches: /^\bhi\b|\bhello\b|\bhey\b|\bhallo\b/i });
 bot.beginDialogAction('event_program', '/program');
@@ -28,9 +29,8 @@ bot.dialog('/', function (session) {
 });
 
 bot.dialog('/menu', function (session) {
-    session.send("how can I help you?");
-    ctrl.sendMenu(session) ;
-    session.endDialog();
+    session.sendTyping();
+    ctrl.sendMenu(session);
 });
 
 bot.dialog('/program', function (session) {
