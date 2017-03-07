@@ -19,9 +19,9 @@ exports.sendMenu = function(session) {
     var card =  {
         facebook: {
             attachment: {
-                type: "template",                
+                type: "template",
                 payload: {
-                    template_type: "button",                    
+                    template_type: "button", 
                     text: "How can I help you?",
                     buttons: buttons
                 }

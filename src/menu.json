@@ -4,19 +4,19 @@
     "items": [{
             "name": "Presentations",
             "postback": "presentations",
-            "image": "https://www.womentechmakers.at/img/other/opening.jpg"
+            "image": "http://www.womentechmakers.at/img/other/opening.jpg"
         }, {
             "name": "Workshops",
             "postback": "workshops",
-            "image": "https://www.womentechmakers.at/img/other/lego.jpg"
+            "image": "http://www.womentechmakers.at/img/other/lego.jpg"
         }, {
             "name": "Breaks",
             "postback": "breaks",
-            "image": "https://www.womentechmakers.at/img/other/coffeebreak.jpg"
+            "image": "http://www.womentechmakers.at/img/other/coffeebreak.jpg"
         }, {
             "name": "Afterparty",
             "postback": "afterparty",
-            "image": "https://www.womentechmakers.at/img/other/party.png"
+            "image": "http://www.womentechmakers.at/img/other/party.png"
         }]
 }, {
     "name": "Next",
