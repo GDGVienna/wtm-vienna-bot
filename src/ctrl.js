@@ -9,9 +9,6 @@ var moment = require("moment");
 exports.sendMenu = function(session) {
     var buttons = [];
     for (var i = 0; i < menu.length; i++) {
-        // if (menu[i].enabled === true) {            
-        //     menu_buttons.push(new builder.CardAction.dialogAction(session, menu[i].postback, null,  menu[i].name))
-        // }
         var button = {
             title: menu[i].name,
             type: 'postback',
@@ -33,13 +30,6 @@ exports.sendMenu = function(session) {
     };
     var msg = new builder.Message(session).sourceEvent(card);
     session.send(msg);
-    // var msg = new builder.Message(session)
-    //     .attachments([
-    //         new builder.HeroCard(session)
-    //             //.title("Test")
-    //             .buttons(menu_buttons)
-    //     ]);
-    // session.send(msg);
 }
 
 exports.sendProgram = function(session) {
@@ -51,8 +41,8 @@ exports.sendProgram = function(session) {
             title: item.name,
             image_url: item.image,
             buttons: [{
-                title: 'Show',
-                type: 'postback',
+                title: "Show",
+                type: "postback",
                 payload: item.postback
             }]
         };
