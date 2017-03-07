@@ -15,12 +15,9 @@
             "postback": "aftreparty"
         }]
 }, {
-    "name": "What's next?",
+    "name": "Next",
     "postback": "next"
 }, {
-    "name": "What's up right now?",
+    "name": "Right now?",
     "postback": "now"
-}, {
-    "name": "Venue",
-    "postback": "venue"
 }]
