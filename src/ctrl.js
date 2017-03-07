@@ -51,7 +51,7 @@ exports.sendProgram = function() {
             image_url: item.image,
             buttons: [{
                 title: 'Show',
-                type: 'Postback',
+                type: 'postback',
                 payload: item.postback
             }]
         };
