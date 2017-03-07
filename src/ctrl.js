@@ -50,7 +50,7 @@ exports.sendProgram = function(session) {
                 type: 'postback',
                 payload: i + "_speaker"
             };
-            buttons.push(button);
+            //buttons.push(button);
         }
         var image = "";
         if (item.image !== undefined) {
