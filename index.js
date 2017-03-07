@@ -19,7 +19,7 @@ server.post('/api/messages', connector.listen());
 server.post('/api/program', connector.listen());
 
 bot.beginDialogAction('hi', '/', { matches: /^\bhi\b|\bhello\b|\bhey\b|\bhallo\b/i });
-bot.beginDialogAction('event_program', '/program');
+bot.beginDialogAction('program', '/program');
 
 bot.dialog('/', function (session) {
     var msg = "hi";
