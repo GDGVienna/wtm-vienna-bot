@@ -31,8 +31,7 @@ exports.sendProgram = function(session) {
             var button = {
                 title: 'More info',
                 type: 'postback',
-                payload: i + "_description",
-                webview_height_ratio: 'compact'
+                payload: i + "_description"
             };
             buttons.push(button);
         }
@@ -49,8 +48,7 @@ exports.sendProgram = function(session) {
             var button = {
                 title: title,
                 type: 'postback',
-                payload: i + "_speaker",
-                webview_height_ratio: 'compact'
+                payload: i + "_speaker"
             };
             buttons.push(button);
         }
