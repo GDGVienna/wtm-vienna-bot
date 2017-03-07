@@ -7,23 +7,44 @@ var program = require("./program.json")
 var moment = require("moment");
 
 exports.sendMenu = function(session) {
-    var menu_buttons = [];
+    var buttons = [];
     for (var i = 0; i < menu.length; i++) {
-        if (menu[i].enabled === true) {            
-            menu_buttons.push(new builder.CardAction.dialogAction(session, menu[i].postback, null,  menu[i].name))
-        }
+        // if (menu[i].enabled === true) {            
+        //     menu_buttons.push(new builder.CardAction.dialogAction(session, menu[i].postback, null,  menu[i].name))
+        // }
+        var button = {
+            title: menu[i].name,
+            type: 'postback',
+            payload: menu[i].postback
+        };
+        buttons.push(button);
     }
-    var msg = new builder.Message(session)
-        .attachments([
-            new builder.HeroCard(session)
-                //.title("Test")
-                .buttons(menu_buttons)
-        ]);
+    var card =  {
+        facebook: {
+            attachment: {
+                type: "template",                
+                payload: {
+                    template_type: "button",                    
+                    text: "what do you want to do next?",
+                    buttons: buttons
+                }
+            }
+        }
+    };
+    var msg = new builder.Message(session).sourceEvent(card);
     session.send(msg);
+    // var msg = new builder.Message(session)
+    //     .attachments([
+    //         new builder.HeroCard(session)
+    //             //.title("Test")
+    //             .buttons(menu_buttons)
+    //     ]);
+    // session.send(msg);
 }
 
 exports.sendProgram = function(session) {
     var elements = [];
+    var cards = []
     for (var i = 0; i < program.length; i++) {
         var item = program[i];
         var buttons = [];
@@ -52,21 +73,20 @@ exports.sendProgram = function(session) {
             };
             //buttons.push(button);
         }
-        var image = "";
+        var image = null;
         if (item.image !== undefined) {
             image = item.image;
         } else if (item.speakers !== undefined && item.speakers.length === 1) {
             image = item.speakers[0].image;
-        } else {
-            image = "https://www.womentechmakers.at/img/favicons/mstile-310x310.png";
-        }
+        } 
         var time = moment(item.start, "YYYY-MM-DD HH:mm").format('H:mm');
         var element = {
             title: item.name,
             image_url: image,
             subtitle: time + " " + speakers,
             buttons: buttons
-        }        
+        }
+        if (j)
         elements.push(element);
     }
 
