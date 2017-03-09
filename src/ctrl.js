@@ -18,7 +18,7 @@ exports.sendMenu = function (session) {
             //image_url: "http://womentechmakers.at/img/sections-background/schedule.jpg",
             buttons: [{
                 type: "web_url",
-                url: "https://goo.gl/maps/e8pWhaSCWe12",
+                url: "http://goo.gl/maps/e8pWhaSCWe12",
                 title: "Location",
                 webview_height_ratio: "full",
                 messenger_extensions: true
@@ -78,7 +78,7 @@ exports.sendMenu = function (session) {
             buttons: [{
                 title: "Location",
                 type: "web_url",
-                url: "https://goo.gl/maps/BmNPZsx8ndP2",
+                url: "http://goo.gl/maps/BmNPZsx8ndP2",
                 webview_height_ratio: "full",
                 messenger_extensions: true
             }]
