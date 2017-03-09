@@ -45,7 +45,7 @@ exports.sendMenu = function (session) {
     };
     elements.push(workshops);
     //if (now.isAfter(start) && now.isBefore(end)) {
-        var now = {
+        var running = {
             title: "What's running now?",
             subtitle: null,
             image_url: text.images.clock,
@@ -55,7 +55,7 @@ exports.sendMenu = function (session) {
                 payload: "next"
             }]
         };
-        elements.push(now);
+        elements.push(running);
         var next = {
             title: "What's next?",
             subtitle: null,

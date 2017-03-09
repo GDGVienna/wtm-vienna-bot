@@ -16,7 +16,7 @@ var bot = new builder.UniversalBot(connector, { persistConversationData: true })
 server.post('/api/messages', connector.listen());
 
 bot.beginDialogAction('hi', '/', { matches: /^\bhi\b|\bhello\b|\bhey\b|\bhallo\b/i });
-bot.beginDialogAction('event_program', '/program', { matches: /^\bprogram\b/i });
+bot.beginDialogAction('program', '/program', { matches: /^\bprogram\b/i });
 
 bot.dialog('/', function (session) {
     var msg = "hi";
