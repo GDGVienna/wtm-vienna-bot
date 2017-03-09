@@ -81,7 +81,7 @@ exports.sendMenu = function (session) {
         var afterparty = {
             title: "Afterparty",
             subtitle: "18:15",
-            image_url: "http://womentechmakers.at/img/sections-background/schedule.jpg",
+            image_url: "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.1975989,16.367667&maptype=roadmap&zoom=18&markers=48.1975989,16.367667",
             //buttons: [{
             //    title: "Show",
             //    type: "postback",
@@ -89,7 +89,7 @@ exports.sendMenu = function (session) {
             //}]
             buttons: [{
                 type: "web_url",
-                url: "http://www.google.at/maps/place/Lanea/@48.1955122,16.3586215,16z/data=!4m5!3m4!1s0x0:0xa38cbe80be070add!8m2!3d48.1976849!4d16.36775",
+                url: "http://www.google.com/maps/@48.1977,16.3670494,19z",
                 title: "Location",
                 webview_height_ratio: "compact",
                 messenger_extensions: true
