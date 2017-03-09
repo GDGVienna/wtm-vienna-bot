@@ -25,8 +25,7 @@ exports.sendMenu = function (session) {
                 title: "Location",
                 type: "web_url",
                 url: "http://maps.google.com/maps?q=48.1975989,16.367667",
-                webview_height_ratio: "full",
-                messenger_extensions: true
+                webview_height_ratio: "compact"
             }]
         };
         elements.push(registration);
