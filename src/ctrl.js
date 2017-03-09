@@ -17,11 +17,11 @@ exports.sendMenu = function (session) {
             subtitle: "9:00",
             //image_url: "http://womentechmakers.at/img/sections-background/schedule.jpg",
             buttons: [{
-                type: "web_url",
-                url: "http://goo.gl/maps/e8pWhaSCWe12",
                 title: "Location",
-                webview_height_ratio: "full",
-                messenger_extensions: true
+                type: "web_url",
+                url: "http://goo.gl/maps/e8pWhaSCWe12"
+                //webview_height_ratio: "full",
+                //messenger_extensions: true
             }]
         };
         elements.push(registration);
@@ -78,9 +78,9 @@ exports.sendMenu = function (session) {
             buttons: [{
                 title: "Location",
                 type: "web_url",
-                url: "http://goo.gl/maps/BmNPZsx8ndP2",
-                webview_height_ratio: "full",
-                messenger_extensions: true
+                url: "http://goo.gl/maps/BmNPZsx8ndP2"
+                //webview_height_ratio: "full",
+                //messenger_extensions: true
             }]
         };
         elements.push(afterparty);
