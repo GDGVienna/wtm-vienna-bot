@@ -90,10 +90,9 @@ exports.sendMenu = function (session) {
             //}]
             buttons: [{
                 type: "web_url",
-                url: "http://womentechmakers.at/",
+                url: "http://womentechmakers.at",
                 title: "Location",
-                webview_height_ratio: "compact",
-                messenger_extensions: true
+                webview_height_ratio: "compact"
             }]
         };
         elements.push(afterparty);
