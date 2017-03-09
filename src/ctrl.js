@@ -15,13 +15,13 @@ exports.sendMenu = function (session) {
         var registration = {
             title: "Registration",
             subtitle: "9:00",
-            //image_url: "http://womentechmakers.at/img/sections-background/schedule.jpg",
+            image_url: "http://womentechmakers.at/img/sections-background/schedule.jpg",
             buttons: [{
                 title: "Location",
                 type: "web_url",
-                url: "http://goo.gl/maps/e8pWhaSCWe12"
-                //webview_height_ratio: "full",
-                //messenger_extensions: true
+                url: "http://goo.gl/maps/e8pWhaSCWe12",
+                webview_height_ratio: "full",
+                messenger_extensions: true
             }]
         };
         elements.push(registration);
@@ -29,7 +29,7 @@ exports.sendMenu = function (session) {
     var presentations = {
         title: "Presentations",
         subtitle: "See all presentations",
-        //image_url: "http://womentechmakers.at/img/posts/call.jpg",
+        image_url: "http://womentechmakers.at/img/posts/call.jpg",
         buttons: [{
             title: "Show",
             type: "postback",
@@ -40,7 +40,7 @@ exports.sendMenu = function (session) {
     var workshops = {
         title: "Workshops",
         subtitle: "See all workshops",
-        //image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
+        image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
         buttons: [{
             title: "Show",
             type: "postback",
@@ -51,7 +51,7 @@ exports.sendMenu = function (session) {
     if (now.isAfter(start) && now.isBefore(end)) {
         var now = {
             title: "What's running now?",
-            //image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
+            image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
             buttons: [{
                 title: "Show",
                 type: "postback",
@@ -61,7 +61,7 @@ exports.sendMenu = function (session) {
         elements.push(now);
         var next = {
             title: "What's next?",
-            //image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
+            image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
             buttons: [{
                 title: "Show",
                 type: "postback",
@@ -74,13 +74,13 @@ exports.sendMenu = function (session) {
         var afterparty = {
             title: "Afterparty",
             subtitle: "18:15",
-            //image_url: "http://womentechmakers.at/img/sections-background/schedule.jpg",
+            image_url: "http://womentechmakers.at/img/sections-background/schedule.jpg",
             buttons: [{
                 title: "Location",
                 type: "web_url",
-                url: "http://goo.gl/maps/BmNPZsx8ndP2"
-                //webview_height_ratio: "full",
-                //messenger_extensions: true
+                url: "http://goo.gl/maps/BmNPZsx8ndP2",
+                webview_height_ratio: "full",
+                messenger_extensions: true
             }]
         };
         elements.push(afterparty);
