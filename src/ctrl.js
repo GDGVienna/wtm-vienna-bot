@@ -82,18 +82,18 @@ exports.sendMenu = function (session) {
             title: "Afterparty",
             subtitle: "18:15",
             image_url: "http://womentechmakers.at/img/sections-background/schedule.jpg",
-            buttons: [{
-                title: "Show",
-                type: "postback",
-                payload: "presentations"
-            }]
             //buttons: [{
-            //    title: "Location",
-            //    type: "web_url",
-            //    url: "http://goo.gl/maps/BmNPZsx8ndP2",
-            //    webview_height_ratio: "full",
-            //    messenger_extensions: true
+            //    title: "Show",
+            //    type: "postback",
+            //    payload: "presentations"
             //}]
+            buttons: [{
+                type: "web_url",
+                url: "http://goo.gl/maps/BmNPZsx8ndP2",
+                title: "Location",
+                webview_height_ratio: "compact",
+                messenger_extensions: true
+            }]
         };
         elements.push(afterparty);
     }
