@@ -88,10 +88,10 @@ exports.sendMenu = function (session) {
     var card =  {
         facebook: {
             attachment: {
-                type: "generic",
+                type: "template",
+                image_aspect_ratio: "square",
                 payload: {
                     template_type: "generic", 
-                    text: "How can I help you?",
                     elements: elements
                 }
             }
