@@ -1,9 +1,7 @@
 var builder = require('botbuilder');
 var ctrl = require('./src/ctrl')
-var moment = require('moment');
 var restify = require('restify');
 var text = require("./src/text.json");
-var utils = require('./src/utils')
 
 var server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, function () {

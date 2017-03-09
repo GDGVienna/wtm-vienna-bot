@@ -1,6 +1,4 @@
 var builder = require('botbuilder');
-var db = require("./db");
-var utils = require("./utils.js")
 var text = require("./text.json")
 var program = require("./program.json")
 var moment = require("moment");
@@ -49,7 +47,7 @@ exports.sendMenu = function (session) {
     //if (now.isAfter(start) && now.isBefore(end)) {
         var now = {
             title: "What's running now?",
-            subtitle: "test",
+            subtitle: null,
             image_url: text.images.clock,
             buttons: [{
                 title: "Show",
@@ -60,7 +58,7 @@ exports.sendMenu = function (session) {
         elements.push(now);
         var next = {
             title: "What's next?",
-            subtitle: "test",
+            subtitle: null,
             image_url: text.images.mech,
             buttons: [{
                 title: "Show",
