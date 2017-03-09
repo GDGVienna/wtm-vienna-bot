@@ -24,7 +24,7 @@ exports.sendMenu = function (session) {
             buttons: [{
                 title: "Location",
                 type: "web_url",
-                url: "http://goo.gl/maps/e8pWhaSCWe12",
+                url: "http://plus.codes/8FWR59X9+34",
                 webview_height_ratio: "full",
                 messenger_extensions: true
             }]
