@@ -17,13 +17,13 @@ exports.sendMenu = function (session) {
             subtitle: "9:00",
             //image_url: "http://womentechmakers.at/img/sections-background/schedule.jpg",
             buttons: [{
-                "type": "web_url",
-                "url": "https://goo.gl/maps/e8pWhaSCWe12",
-                "title": "Location",
-                "webview_height_ratio": "full",
-                "messenger_extensions": true
+                type: "web_url",
+                url: "https://goo.gl/maps/e8pWhaSCWe12",
+                title: "Location",
+                webview_height_ratio: "full",
+                messenger_extensions: true
             }]
-        }
+        };
         elements.push(registration);
     }
     var presentations = {
@@ -35,7 +35,7 @@ exports.sendMenu = function (session) {
             type: "postback",
             payload: "presentations"
         }]
-    }
+    };
     elements.push(presentations);
     var workshops = {
         title: "Workshops",
@@ -46,7 +46,7 @@ exports.sendMenu = function (session) {
             type: "postback",
             payload: "workshops"
         }]
-    }
+    };
     elements.push(workshops);
     if (now.isAfter(start) && now.isBefore(end)) {
         var now = {
@@ -57,7 +57,7 @@ exports.sendMenu = function (session) {
                 type: "postback",
                 payload: "next"
             }]
-        }
+        };
         elements.push(now);
         var next = {
             title: "What's next?",
@@ -67,7 +67,7 @@ exports.sendMenu = function (session) {
                 type: "postback",
                 payload: "now"
             }]
-        }
+        };
         elements.push(next);
     }
     if (!now.startOf('day').isAfter(start.startOf('day'))) {
@@ -76,13 +76,13 @@ exports.sendMenu = function (session) {
             subtitle: "18:15",
             //image_url: "http://womentechmakers.at/img/sections-background/schedule.jpg",
             buttons: [{
-                "title": "Location",
-                "type": "web_url",
-                "url": "https://goo.gl/maps/BmNPZsx8ndP2",
-                "webview_height_ratio": "full",
-                "messenger_extensions": true
+                title: "Location",
+                type: "web_url",
+                url: "https://goo.gl/maps/BmNPZsx8ndP2",
+                webview_height_ratio: "full",
+                messenger_extensions: true
             }]
-        }
+        };
         elements.push(afterparty);
     }
     var card =  {
