@@ -2,7 +2,6 @@ var builder = require('botbuilder');
 var db = require("./db");
 var utils = require("./utils.js")
 var text = require("./text.json")
-var menu = require("./menu.json")
 var program = require("./program.json")
 var moment = require("moment");
 
@@ -14,7 +13,7 @@ exports.sendMenu = function (session) {
     if (now.isBefore(end)) {
         var registration = {
             title: "Registration and Coffee",
-            subtitle: "9:00, TU Wien, Guﬂhausstraﬂe 25-27, 1040 Vienna",
+            subtitle: "9:00, TU Wien, Gusshausstrasse 25-27, 1040 Vienna",
             image_url: text.images.event,
             buttons: [{
                 title: "Map",
