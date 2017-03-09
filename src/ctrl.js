@@ -47,7 +47,7 @@ exports.sendMenu = function (session) {
         }]
     };
     elements.push(workshops);
-    if (now.isAfter(start) && now.isBefore(end)) {
+    //if (now.isAfter(start) && now.isBefore(end)) {
         var now = {
             title: "What's running now?",
             subtitle: "test",
@@ -70,12 +70,12 @@ exports.sendMenu = function (session) {
             }]
         };
         elements.push(next);
-    }
+    //}
     if (!now.startOf('day').isAfter(start.startOf('day'))) {
         var afterparty = {
             title: "Awesome Afterparty!",
-            subtitle: "18:15, Lanea, Rilkeplatz 3, 1040 Vienna, Austria",
-            image_url: text.maps.afterparty,
+            subtitle: "18:15, Lanea, Rilkeplatz 3, 1040 Vienna",
+            image_url: text.images.afterparty,
             buttons: [{
                 type: "web_url",
                 url: text.maps.afterparty,
