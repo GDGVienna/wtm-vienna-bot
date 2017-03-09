@@ -6,24 +6,93 @@ var menu = require("./menu.json")
 var program = require("./program.json")
 var moment = require("moment");
 
-exports.sendMenu = function(session) {
-    var buttons = [];
-    for (var i = 0; i < menu.length; i++) {
-        var button = {
-            title: menu[i].name,
-            type: 'postback',
-            payload: menu[i].postback
-        };
-        buttons.push(button);
+exports.sendMenu = function (session) {
+    var start = moment(program.start, "YYYY-MM-DD HH:mm");
+    var end = moment(program.end, "YYYY-MM-DD HH:mm");
+    var now = moment();
+    var elements = [];
+    if (now.isBefore(end)) {
+        var registration = {
+            title: "Registration",
+            subtitle: "9:00",
+            //image_url: "http://womentechmakers.at/img/sections-background/schedule.jpg",
+            buttons: [{
+                "type": "web_url",
+                "url": "https://goo.gl/maps/e8pWhaSCWe12",
+                "title": "Location",
+                "webview_height_ratio": "full",
+                "messenger_extensions": true
+            }]
+        }
+        elements.push(registration);
+    }
+    var presentations = {
+        title: "Presentations",
+        subtitle: "See all presentations",
+        //image_url: "http://womentechmakers.at/img/posts/call.jpg",
+        buttons: [{
+            title: "Show",
+            type: "postback",
+            payload: "presentations"
+        }]
+    }
+    elements.push(presentations);
+    var workshops = {
+        title: "Workshops",
+        subtitle: "See all workshops",
+        //image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
+        buttons: [{
+            title: "Show",
+            type: "postback",
+            payload: "workshops"
+        }]
+    }
+    elements.push(workshops);
+    if (now.isAfter(start) && now.isBefore(end)) {
+        var now = {
+            title: "What's running now?",
+            //image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
+            buttons: [{
+                title: "Show",
+                type: "postback",
+                payload: "next"
+            }]
+        }
+        elements.push(now);
+        var next = {
+            title: "What's next?",
+            //image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
+            buttons: [{
+                title: "Show",
+                type: "postback",
+                payload: "now"
+            }]
+        }
+        elements.push(next);
+    }
+    if (now.startOf('day').isSame(start.startOf('day'))) {
+        var afteparty = {
+            title: "Afterparty",
+            subtitle: "18:15",
+            //image_url: "http://womentechmakers.at/img/sections-background/schedule.jpg",
+            buttons: [{
+                "title": "Location",
+                "type": "web_url",
+                "url": "https://goo.gl/maps/BmNPZsx8ndP2",
+                "webview_height_ratio": "full",
+                "messenger_extensions": true
+            }]
+        }
+        elements.push(afterparty);
     }
     var card =  {
         facebook: {
             attachment: {
-                type: "template",
+                type: "generic",
                 payload: {
-                    template_type: "button", 
+                    template_type: "generic", 
                     text: "How can I help you?",
-                    buttons: buttons
+                    elements: elements
                 }
             }
         }
@@ -39,7 +108,7 @@ exports.sendProgram = function(session) {
         var element = {
             title: item.title,
             subtitle: "subtitle",
-            image_url: "https://www.womentechmakers.at/img/favicons/mstile-310x310.png",
+            image_url: "http://www.womentechmakers.at/img/favicons/mstile-310x310.png",
             buttons: [{
                 title: "Speakers",
                 type: "postback",
