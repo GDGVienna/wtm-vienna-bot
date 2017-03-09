@@ -1,5 +1,5 @@
 {
-  "name": "wtm-vienna-bot",
+  "title": "wtm-vienna-bot",
   "version": "1.0.0",
   "description": "Women Techmakers Vienna event bot",
   "main": "index.js",

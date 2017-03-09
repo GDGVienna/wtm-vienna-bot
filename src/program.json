@@ -1,18 +1,18 @@
 [{
-    "name": "Registration and Coffee",
+    "title": "Registration and Coffee",
     "type": "break",
     "start": "2017-03-11 09:00",
     "duration": 30
 }, {
-    "name": "Welcome and Intro to WTM",
+    "title": "Welcome and Intro to WTM",
     "type": "presentation",
     "start": "2017-03-11 09:30",
     "duration": 15
 }, {
-    "name": "My first computer game with TouchDevelop",
+    "title": "My first computer game with TouchDevelop",
     "description": "In this workshop we will learn what programming is and how you have to think when you want to develop computer games. We will work together on a computer game, so that by the end of the workshop you have created your own version of a game similar to Flappy Bird. Of course, making a game also means playing it! Who will fly the longest in the end?",
     "speakers": [{
-        "name": "Rina Ahmed",
+        "title": "Rina Ahmed",
         "image": "http://www.womentechmakers.at/img/people/RinaAhmed.jpg",
         "organization": "Microsoft Austria",
         "position": "Technical Evangelist",
@@ -23,10 +23,10 @@
     "start": "2017-03-11 09:30",
     "duration": 195
 }, {
-    "name": "The 5 elements of urban architecture: fire, earth, water, air and You",
+    "title": "The 5 elements of urban architecture: fire, earth, water, air and You",
     "description": "Urban architecture has a key role in climate policies. More than two thirds of the human population will live in cities by the year 2050. If we do not think about city design, we will not be able to meet our climate goals. Urban design is a fascinating topic for me. It is complex – a typical building performance simulation uses thousands of variables and a lot of computer power. It is integrative – bringing together social sciences, architecture, medicine, physics, meteorology and a variety of other research areas. And it is demanding – changing cities is a political effort that rarely gains the attention it deserves. Therefore, it is the perfect research area for me and other women. Urban design can be understood in five critical aspects that I like to describe as the 5 elements of urban performance: Fire – The suns radiation has major influences on us as human beings, but also on the functionality of buildings and urban environments. The amount of solar gains that go into a building can make it energy efficient and sustainable, but if not considered properly can lead to a building or environment that makes us sick and needs enormous efforts to be usable. Water – Cities have to deal with water in many different ways (eg. Supply of save drinking water, storm water management, sewage treatment). But also the humidity and evaporation will affect the habitability of urban spaces and the way buildings work. Earth --- Urban environments are composed of many different surfaces. The amount of permeable soil within city structures and also the amount of vegetation is fundamental not only to the human wellbeing but also the urban climatic. Air --- The air we breathe is composed by the emission we produce. Furthermore wind on one hand is very important to remove pollutants and to bring fresh into the city. But it can also cause problems for the architecture and the usability of open spaces if to strong. You – The user of an environment whether a building or an urban space plays a key role f we want to make out cities more sustainable. Anthropogenic heat from cars, heating and/or cooling spaces transforms the urban climate and therefore the functionality of buildings and spaces.",
     "speakers": [{
-        "name": "Kristina Kiesel",
+        "title": "Kristina Kiesel",
         "image": "http://www.womentechmakers.at/img/people/KristinaKiesel.jpg",
         "organization": "TU Vienna",
         "bio": "I am born and raised in Vienna and studied architecture at the Technical University Vienna and the Pratt Institute NY. In 2015 I finished my PhD in Building Physics on 'The Influence of the Urban Micro Climate on the Thermal Performance of Buildings'. I have been working in research and teaching at the Department of Building Physics and Building Ecology at TU Vienna since 2010. My research focuses are urban microclimate, urban density, air quality, building performance and building performance simulation, acoustics and light."
@@ -36,16 +36,16 @@
     "start": "2017-03-11 09:45",
     "duration": 60
 }, {
-    "name": "Workshop: LEGO - this game is serious",
+    "title": "Workshop: LEGO - this game is serious",
     "description": "LEGO is already used as a tool in business environments amongst others to resolve challenges and to map out complicated strategic decisions. We use LEGO as a co-creation tool, to express feeling and ideas. By building LEGO models, people associate metaphors to it and a storytelling begins, which is more powerful than just talking. This hands-on workshop is inspired by LEGO Serious Play principles but draws elements from various other methodologies as well, this way providing a unique LEGO experience. The workshop offers participants the possibility to build up something together, to be creative, to share ideas and thoughts, to play and to discuss serious topics along the way. At the Women Techmakers we will model topics related to challenges women face in the STEM areas. During the modelling phase also ideas and solutions will be discussed. It is a really powerful tool to loosen up boundaries and talk about feelings and abstract concepts in a very concrete environment.",
     "speakers": [{
-            "name": "Nóra Sárga",
+            "title": "Nóra Sárga",
             "image": "http://www.womentechmakers.at/img/people/NoraSarga.jpg",
             "organization": "beteal",
             "position": "Business Development Manager, Coach and Consultant",
             "bio": "Nora is a Business Development Manager, Coach and Consultant at beteal. She studied and worked in various fields and assembled an interdisciplinary work experience. After a short experiment working with a traditional company she returned and worked for several years with startups, due to the inspiring environment startups provide. After moving to Austria, Nora was the event manager of the Pioneers Festival for 2 years. Inspired by her own need for a healthy work environment, which make employees happy and motivated she started looking for organizational models which enable a greater degree of freedom. Now she is helping companies to bring out their full potential, learn innovation methods and transform into a new level of operation."
         }, {
-            "name": "Enikö Balint",
+            "title": "Enikö Balint",
             "image": "http://www.womentechmakers.at/img/people/EnikoBalint.jpg",
             "bio": "Eni havse started as a developer 9 years ago at an international insurance company, moved upwards the corporate ladder, which was sometimes challenging as a women (+ migrant) in such a male-dominated area. For over 2 years she was leading the distributed business process management team with 22 employees and was responsible for a 7 digit budget. Afterwards she wanted to dive into the startup world, worked for and with startups and decided to build up her own company with the mission of bringing out the potential of individuals and organisations. She thinks adults should play more, this is also what beteal stands for."
         }],
@@ -54,10 +54,10 @@
     "start": "2017-03-11 09:45",
     "duration": 120
 }, {
-    "name": "Thriving in the Macondo: VR storytelling workshops for women",
+    "title": "Thriving in the Macondo: VR storytelling workshops for women",
     "description": "Josephine Dorado recently completed a Fulbright residency in Austria, working with women in the Macondo refugee community to create virtual reality media narratives of their journeys and developing a methodology by which the VR workshops can be replicated. The workshops involved creating immersive 360-degree photospheres stitched with audio stories of their journeys. Participants included women from Chechnya, Pakistan, Somalia, Afghanistan and Syria who were taking compulsory language classes at the Macondo. The workshop weaves language learning with immersive story creation in a deeply engaging 360-degree environment. Women participating learned how to generate their own stories, construct and use Google Cardboard headsets and create photospheres, encouraging digital literacy and storytelling skills within a framework of cultural inclusion and awareness. The talk will describe the process and will include elements of participation involving viewing content through Google Cardboard headsets.",
     "speakers": [{
-        "name": "Josephine Dorado",
+        "title": "Josephine Dorado",
         "image": "http://www.womentechmakers.at/img/people/JosephineDorado.jpg",
         "bio": "Josephine Dorado is an entrepreneur, professor and performing artist whose work focuses on the convergence of physical with digital experiences and social practice arts. Her work has garnered multiple Fulbright awards and a MacArthur Foundation award. Recently, Josephine completed a residency at Museumsquartier in Austria, working with refugees to create virtual reality media narratives and exploring aerial performance-play as social practice. She is President of Fulbright’s NY Chapter, teaches at The New School, and consults for the U.S. State Department’s TechCamps. Previously, Josephine founded Kidz Connect, a virtual cultural exchange program that connected youth internationally through creative collaboration and performance in virtual worlds."
     }],
@@ -66,10 +66,10 @@
     "start": "2017-03-11 10:45",
     "duration": 60
 }, {
-    "name": "Leading in a VUCA world",
+    "title": "Leading in a VUCA world",
     "description": "Business is getting more Volatile Uncertain Complex and Ambiguous, how shall we handle this? There are many philosophies about 'Leading Change', 'Motivation 3.0', 'Transformational Leadership' but everyone has to find her own style of creating the future. Since it is within the human nature to learn by examples, I would like to share some of mine with you.",
     "speakers": [{
-        "name": "Tanja Ollinger",
+        "title": "Tanja Ollinger",
         "image": "http://www.womentechmakers.at/img/people/TanjaOllinger.jpg",
         "organization": "Bosch"
     }],
@@ -78,15 +78,15 @@
     "start": "2017-03-11 11:45",
     "duration": 60
 }, {
-    "name": "Lunch break",
+    "title": "Lunch break",
     "type": "break",
     "start": "2017-03-11 12:45",
     "duration": 60
 }, {
-    "name": "Making your voice heard: Open Source Needs You",
+    "title": "Making your voice heard: Open Source Needs You",
     "description": "The people who contribute to an OSS project are the ones shaping its future. But if you've never contributed to an Open Source project before, it can be daunting to submit your first pull request and become part of its community, especially if you're a woman. This might keep you from contributing in the first place, meaning your voice, experience, and opinions will be lost. What if you could submit a pull request with confidence, contribute your skills & experience, and become a meaningful part of a project? My talk will explain what contributing to Open Source actually means, show the (social and technical) ways in which you can contribute, and present paths to get started with your first contribution. By the end, you will know how to find a project you’re passionate about, and how you can go about improving it and the Open Source community—one contribution at a time.",
     "speakers": [{
-        "name": "Laura Gaetano",
+        "title": "Laura Gaetano",
         "image": "http://www.womentechmakers.at/img/people/LauraGaetano.jpg",
         "organization": "Travis Foundation",
         "position": "Manager",
@@ -97,16 +97,16 @@
     "start": "2017-03-11 13:45",
     "duration": 60
 }, {
-    "name": "Ways to find success and happiness at work – lessons for our 20-year old selves",
+    "title": "Ways to find success and happiness at work – lessons for our 20-year old selves",
     "description": "Looking back at our careers so far, we faced both phases of success as well as rocky times and disruptions; at the same time, we realized that while our areas of competence grew, happiness did not always necessarily correlate with (perceived) success. In our talk we want to reflect on the learnings we identified to find both - success and happiness at work.",
     "speakers": [{
-            "name": "Karin Hohenthaner",
+            "title": "Karin Hohenthaner",
             "image": "http://www.womentechmakers.at/img/people/KarinHohenthaner.jpg",
             "organization": "A1 Telekom Austria",
             "position": "Senior Project Manager",
             "bio": "Karin Hohenthaner is a senior project manager at A1 Telekom Austria, Vienna. She has been leading various projects, including post-merger integration projects building convergent solutions to unite processes for fixed-line and mobile customers. During and after her studies of International Business Administration, she worked in Spain, Germany and Austria, in various sectors like e-commerce, university administration and telco. She held project management positions as well as expert roles in marketing, customer services and IT, at organizations such as GSI Commerce, Deutsche Post, Vienna University and (for the last eight years) A1 Telekom Austria. Karin is passionate about agile ways of working and leading project teams to success."
         }, {
-            "name": "Agnes Scherzer",
+            "title": "Agnes Scherzer",
             "image": "http://www.womentechmakers.at/img/people/AgnesScherzer.jpg",
             "organization": "Pivotal Labs, Berlin",
             "position": "Senior Product Manager",
@@ -117,16 +117,16 @@
     "start": "2017-03-11 14:45",
     "duration": 60
 }, {
-    "name": "Workshop: LEGO - this game is serious",
+    "title": "Workshop: LEGO - this game is serious",
     "description": "LEGO is already used as a tool in business environments amongst others to resolve challenges and to map out complicated strategic decisions. We use LEGO as a co-creation tool, to express feeling and ideas. By building LEGO models, people associate metaphors to it and a storytelling begins, which is more powerful than just talking. This hands-on workshop is inspired by LEGO Serious Play principles but draws elements from various other methodologies as well, this way providing a unique LEGO experience. The workshop offers participants the possibility to build up something together, to be creative, to share ideas and thoughts, to play and to discuss serious topics along the way. At the Women Techmakers we will model topics related to challenges women face in the STEM areas. During the modelling phase also ideas and solutions will be discussed. It is a really powerful tool to loosen up boundaries and talk about feelings and abstract concepts in a very concrete environment.",
     "speakers": [{
-            "name": "Nóra Sárga",
+            "title": "Nóra Sárga",
             "image": "http://www.womentechmakers.at/img/people/NoraSarga.jpg",
             "organization": "beteal",
             "position": "Business Development Manager, Coach and Consultant",
             "bio": "Nora is a Business Development Manager, Coach and Consultant at beteal. She studied and worked in various fields and assembled an interdisciplinary work experience. After a short experiment working with a traditional company she returned and worked for several years with startups, due to the inspiring environment startups provide. After moving to Austria, Nora was the event manager of the Pioneers Festival for 2 years. Inspired by her own need for a healthy work environment, which make employees happy and motivated she started looking for organizational models which enable a greater degree of freedom. Now she is helping companies to bring out their full potential, learn innovation methods and transform into a new level of operation."
         }, {
-            "name": "Enikö Balint",
+            "title": "Enikö Balint",
             "image": "http://www.womentechmakers.at/img/people/EnikoBalint.jpg",
             "bio": "Eni havse started as a developer 9 years ago at an international insurance company, moved upwards the corporate ladder, which was sometimes challenging as a women (+ migrant) in such a male-dominated area. For over 2 years she was leading the distributed business process management team with 22 employees and was responsible for a 7 digit budget. Afterwards she wanted to dive into the startup world, worked for and with startups and decided to build up her own company with the mission of bringing out the potential of individuals and organisations. She thinks adults should play more, this is also what beteal stands for."
         }],
@@ -135,10 +135,10 @@
     "start": "2017-03-11 13:45",
     "duration": 120
 }, {
-    "name": "code! - draw! - stitch!",
+    "title": "code! - draw! - stitch!",
     "description": "Turtlestitch is based on a modified Snap!, a web-based graphic programming tool similar to Scratch. The modification enables to use the pen tool to generate patterns that can be read by embroidery machines. Thus it brings together the abstract logic of programming with the material logic of textiles.\nDuring the workshop, the participants will be instructed to design a pattern and how to materialize this pattern as embroidery on a textile. You can bring your own T-shirts (at your own risk) or use textiles provided.",
     "speakers": [{
-        "name": "Andrea Mayr-Stalder",
+        "title": "Andrea Mayr-Stalder",
         "image": "http://www.womentechmakers.at/img/people/AndreaMayr-Stalder.jpg",
         "bio": "Since the late 1990s, Andrea has worked on numerous artistic and educational Internet projects. She studied visual media (University of Applied Arts; Vienna) and has worked as a system admin and programmer at ISPs in Vienna and New York. Much of her work involves Free Software and she was chairwomen of the LinuxWochen, Vienna. Most recently, she initiated Turtlestitch.org, a platform to combine computing and embroidery."
     }],
@@ -147,15 +147,15 @@
     "start": "2017-03-11 13:30",
     "duration": 120
 }, {
-    "name": "Coffee and Snacks",
+    "title": "Coffee and Snacks",
     "type": "break",
     "start": "2017-03-11 15:45",
     "duration": 30
 }, {
-    "name": "The Benefits Of Teaching Kids to Code",
+    "title": "The Benefits Of Teaching Kids to Code",
     "description": "'How come we can only define a method once?' Ever taught kids to code? They have this magical ability to take something you think you understand well and turn it upside down within an instant. They challenge norms and ask questions that you never thought could be asked. Challenges aside, teaching has been an extraordinary turning point for me. I highly recommend it! You can take the lessons learned from doing so and turn them into valuable skills. These can help you become an active member of the developer community. Everyone can benefit from teaching, and not just from teaching kids!",
     "speakers": [{
-        "name": "Ramón Huidobro",
+        "title": "Ramón Huidobro",
         "image": "http://www.womentechmakers.at/img/people/RamonHuidobro.jpg",
         "bio": "Ramón is a Chilean fellow living in Vienna, Austria. He’s been developing Mac, iOS and Web software for years and loving every minute of it. During the last five years he’s been running the “Computer Game Programming” after-school activity at his old school in Vienna where he teaches kids to make games with different technologies. He’s also currently wrapping up his Software Engineering degree at the Vienna University of Technology, and at the same time helping run the “Ruby Habits” study group. He loves puppies."
     }],
@@ -164,12 +164,12 @@
     "start": "2017-03-11 16:15",
     "duration": 60
 }, {
-    "name": "Closing discussion",
+    "title": "Closing discussion",
     "type": "discussion",
     "start": "2017-03-11 17:15",
     "duration": 60
 }, {
-    "name": "Awesome Afterparty!",
+    "title": "Awesome Afterparty!",
     "description": "Awesome Afterparty - taking place at Lanea, in walking distance from the conference",
     "type": "party",
     "start": "2017-03-11 18:15",

@@ -34,16 +34,20 @@ exports.sendMenu = function(session) {
 
 exports.sendProgram = function(session) {
     var elements = [];
-    var program = menu[0].items;
-    for (var i = 0; i < program.length; i++) {
+    for (var i = 0; i < 10; i++) {
         var item = program[i];
         var element = {
-            title: item.name,
-            image_url: item.image,
+            title: item.title,
+            subtitle: "subtitle",
+            image_url: "https://www.womentechmakers.at/img/favicons/mstile-310x310.png",
             buttons: [{
-                title: "Show",
+                title: "Speakers",
                 type: "postback",
-                payload: item.postback
+                payload: "test"
+            }, {
+                title: "More info",
+                type: "postback",
+                payload: "test"
             }]
         };
         elements.push(element);
@@ -52,9 +56,9 @@ exports.sendProgram = function(session) {
         facebook: {
             attachment: {
                 type: "template",
+                image_aspect_ratio: "square",
                 payload: {
-                    template_type: "list",
-                    top_element_style: "compact",
+                    template_type: "generic",
                     elements: elements
                 }
             }
@@ -64,7 +68,7 @@ exports.sendProgram = function(session) {
     session.send(msg);
 }
 
-exports.sendProgram2 = function(session) {
+exports.sendProgram3 = function(session, k) {
     var elements = [];
     var cards = []
     for (var i = 0; i < program.length; i++) {
@@ -171,4 +175,8 @@ exports.sendProgram2 = function(session) {
     //     .attachmentLayout(builder.AttachmentLayout.carousel)
     //     .attachments(attachments);
     // session.send(reply);
+}
+
+exports.sendProgram4 = function(session) {
+    
 }
