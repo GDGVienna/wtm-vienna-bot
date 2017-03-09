@@ -10,7 +10,7 @@ exports.sendMenu = function (session) {
     var end = moment(program.end, "YYYY-MM-DD HH:mm");
     var now = moment();
     var elements = [];
-    if (now.isBefore(end)) {
+    if (now.isBefore(start)) {
         var registration = {
             title: "Registration and Coffee",
             subtitle: "9:00, TU Wien, Gusshausstrasse 25-27, 1040 Vienna",
@@ -70,6 +70,20 @@ exports.sendMenu = function (session) {
         };
         elements.push(next);
     //}
+    if (now.isAfter(start) && now.isBefore(end)) {
+        var venue = {
+            title: "Venue",
+            subtitle: "TU Wien, Gusshausstrasse 25-27, 1040 Vienna",
+            image_url: text.images.event,
+            buttons: [{
+                title: "Map",
+                type: "web_url",
+                url: text.maps.event,
+                webview_height_ratio: "compact"
+            }]
+        };
+        elements.push(venue);
+    }
     if (!now.startOf('day').isAfter(start.startOf('day'))) {
         var afterparty = {
             title: "Awesome Afterparty!",
