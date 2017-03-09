@@ -81,7 +81,8 @@ exports.sendMenu = function (session) {
         var afterparty = {
             title: "Afterparty",
             subtitle: "18:15",
-            image_url: "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.1975989,16.367667&maptype=roadmap&zoom=18&markers=48.1975989,16.367667",
+            image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
+            //image_url: "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.1975989,16.367667&maptype=roadmap&zoom=18&markers=48.1975989,16.367667",
             //buttons: [{
             //    title: "Show",
             //    type: "postback",
@@ -89,7 +90,7 @@ exports.sendMenu = function (session) {
             //}]
             buttons: [{
                 type: "web_url",
-                url: "http://www.google.com/maps/@48.1977,16.3670494,19z",
+                url: "http://womentechmakers.at/",
                 title: "Location",
                 webview_height_ratio: "compact",
                 messenger_extensions: true
