@@ -24,7 +24,7 @@ exports.sendMenu = function (session) {
             buttons: [{
                 title: "Location",
                 type: "web_url",
-                url: "https://www.bing.com/maps?&cp=48.196555~16.366621&lvl=17&osid=2aee8345-1163-49ce-8df4-7b91902d8a7f&v=2&sV=2&form=S00027",
+                url: "http://www.bing.com/maps?&cp=48.196555~16.366621&lvl=17&osid=2aee8345-1163-49ce-8df4-7b91902d8a7f&v=2&sV=2&form=S00027",
                 webview_height_ratio: "full",
                 messenger_extensions: true
             }]
