@@ -1,19 +1,21 @@
-{
-    "hi": "Hi {user}, welcome to Women Techmakers Vienna!",
-    "start": "How can I help you?",
-    "bye": "Thanks for your interest in Women Techmakers Vienna!",
-    "syn": {
-        "yes": ["yes", "sure", "ok"],
-        "no": ["no", "i'm good", "nah"]
-    },  
-    "emoticons": {
-        "robot": "\ud83e\udd16",
-        "search": "\ud83d\udd0e",
-        "earth": "\ud83c\udf0d",
-        "victoryhand": "\u270c",
-        "wavinghand": "\ud83d\udc4b",
-        "thumbsup": "\ud83d\udc4b",
-        "bulb": "\ud83d\udca1",
-        "sweat_smile": "\ud83d\ude04"
-    }
+﻿{
+  "hi": "Hi {user}, welcome to Women Techmakers Vienna!",
+  "start": "How can I help you?",
+  "bye": "Thanks for your interest in Women Techmakers Vienna!",
+  "syn": {
+    "yes": [ "yes", "sure", "ok" ],
+    "no": [ "no", "i'm good", "nah" ]
+  },
+  "emoticons": {
+    "robot": "🤖",
+    "search": "🔎",
+    "earth": "🌍",
+    "victoryhand": "✌",
+    "wavinghand": "👋",
+    "thumbsup": "👋",
+    "bulb": "💡",
+    "sweat_smile": "😄"
+  },
+  "afterparty": "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.196861,16.368342&maptype=roadmap&zoom=17&markers=color:blue|label:A|48.196034,16.369640&markers=color:red|label:B|48.197705,16.367766&format=png&path=48.196432,16.369536|48.196533,16.369408|48.197219,16.369880|48.197577,16.367734",
+  "event": "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.195978,16.368770&maptype=roadmap&zoom=18&markers=48.196034,16.369640&format=png"
 }
