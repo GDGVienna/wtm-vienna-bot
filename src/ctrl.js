@@ -51,6 +51,7 @@ exports.sendMenu = function (session) {
     if (now.isAfter(start) && now.isBefore(end)) {
         var now = {
             title: "What's running now?",
+            subtitle: "test",
             image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
             buttons: [{
                 title: "Show",
@@ -61,6 +62,7 @@ exports.sendMenu = function (session) {
         elements.push(now);
         var next = {
             title: "What's next?",
+            subtitle: "test",
             image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
             buttons: [{
                 title: "Show",
