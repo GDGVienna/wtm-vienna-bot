@@ -70,8 +70,8 @@ exports.sendMenu = function (session) {
         }
         elements.push(next);
     }
-    if (now.startOf('day').isSame(start.startOf('day'))) {
-        var afteparty = {
+    if (!now.startOf('day').isAfter(start.startOf('day'))) {
+        var afterparty = {
             title: "Afterparty",
             subtitle: "18:15",
             //image_url: "http://womentechmakers.at/img/sections-background/schedule.jpg",
