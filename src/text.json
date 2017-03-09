@@ -16,6 +16,26 @@
     "bulb": "💡",
     "sweat_smile": "😄"
   },
-  "afterparty": "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.196861,16.368342&maptype=roadmap&zoom=17&markers=color:blue|label:A|48.196034,16.369640&markers=color:red|label:B|48.197705,16.367766&format=png&path=48.196432,16.369536|48.196533,16.369408|48.197219,16.369880|48.197577,16.367734",
-  "event": "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.195978,16.368770&maptype=roadmap&zoom=18&markers=48.196034,16.369640&format=png"
+  "images": {
+    "afterparty": "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.196861,16.368342&maptype=roadmap&zoom=17&markers=color:blue|label:A|48.196034,16.369640&markers=color:red|label:B|48.197705,16.367766&format=png&path=48.196432,16.369536|48.196533,16.369408|48.197219,16.369880|48.197577,16.367734",
+    "event": "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.195978,16.368770&maptype=roadmap&zoom=18&markers=48.196034,16.369640&format=png",
+    "lego": "http://womentechmakers.at/img/other/lego.jpg",
+    "closing": "http://womentechmakers.at/img/other/closing.jpg",
+    "opening": "http://womentechmakers.at/img/other/opening.jpg",
+    "coffee": "http://womentechmakers.at/img/other/coffeebreak.jpg",
+    "mic1": "http://womentechmakers.at/img/other/lightning.jpg",
+    "lunch": "http://womentechmakers.at/img/other/lunchbreak.jpg",
+    "mic2": "http://womentechmakers.at/img/posts/call.jpg",
+    "book": "http://womentechmakers.at/img/posts/cod.jpg",
+    "nemo": "http://womentechmakers.at/img/posts/cod.jpg",
+    "memo1": "http://womentechmakers.at/img/sections-background/blog.jpg",
+    "clock": "http://womentechmakers.at/img/sections-background/schedule.jpg",
+    "stat": "http://womentechmakers.at/img/sections-background/statistic.jpg",
+    "memo2": "http://womentechmakers.at/img/sections-background/subscribe.jpg",
+    "mech": "http://womentechmakers.at/img/sections-background/team.jpg"
+  },
+  "maps": {
+    "event": "http://maps.google.com/maps?q=Gußhausstraße+25-27,Vienna,Austria",
+    "afterparty": "http://maps.google.com/maps?q=Rilkeplatz+3,1040,Vienna,Austria"
+  } 
 }

@@ -13,18 +13,13 @@ exports.sendMenu = function (session) {
     var elements = [];
     if (now.isBefore(end)) {
         var registration = {
-            title: "Registration",
-            subtitle: "9:00",
-            image_url: text.event,
-            //buttons: [{
-            //    title: "Show",
-            //    type: "postback",
-            //    payload: "presentations"
-            //}]
+            title: "Registration and Coffee",
+            subtitle: "9:00, TU Wien, Guﬂhausstraﬂe 25-27, 1040 Vienna",
+            image_url: text.images.event,
             buttons: [{
-                title: "Location",
+                title: "Map",
                 type: "web_url",
-                url: "http://maps.google.com/maps?q=48.1975989,16.367667",
+                url: text.maps.event,
                 webview_height_ratio: "compact"
             }]
         };
@@ -32,10 +27,10 @@ exports.sendMenu = function (session) {
     }
     var presentations = {
         title: "Presentations",
-        subtitle: "See all presentations",
-        image_url: "http://womentechmakers.at/img/posts/call.jpg",
+        subtitle: null,
+        image_url: text.images.mic2,
         buttons: [{
-            title: "Show",
+            title: "See all",
             type: "postback",
             payload: "presentations"
         }]
@@ -43,10 +38,10 @@ exports.sendMenu = function (session) {
     elements.push(presentations);
     var workshops = {
         title: "Workshops",
-        subtitle: "See all workshops",
-        image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
+        subtitle: null,
+        image_url: text.images.lego,
         buttons: [{
-            title: "Show",
+            title: "See all",
             type: "postback",
             payload: "workshops"
         }]
@@ -56,7 +51,7 @@ exports.sendMenu = function (session) {
         var now = {
             title: "What's running now?",
             subtitle: "test",
-            image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
+            image_url: text.images.clock,
             buttons: [{
                 title: "Show",
                 type: "postback",
@@ -67,7 +62,7 @@ exports.sendMenu = function (session) {
         var next = {
             title: "What's next?",
             subtitle: "test",
-            image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
+            image_url: text.images.mech,
             buttons: [{
                 title: "Show",
                 type: "postback",
@@ -78,19 +73,13 @@ exports.sendMenu = function (session) {
     }
     if (!now.startOf('day').isAfter(start.startOf('day'))) {
         var afterparty = {
-            title: "Afterparty",
-            subtitle: "18:15",
-            //image_url: "http://womentechmakers.at/img/about-section/workshop.jpg",
-            image_url: text.afterparty,
-            //buttons: [{
-            //    title: "Show",
-            //    type: "postback",
-            //    payload: "presentations"
-            //}]
+            title: "Awesome Afterparty!",
+            subtitle: "18:15, Lanea, Rilkeplatz 3, 1040 Vienna, Austria",
+            image_url: text.maps.afterparty,
             buttons: [{
                 type: "web_url",
-                url: "http://womentechmakers.at",
-                title: "Location",
+                url: text.maps.afterparty,
+                title: "Map",
                 webview_height_ratio: "compact"
             }]
         };
