@@ -89,7 +89,7 @@ exports.sendMenu = function (session) {
             //}]
             buttons: [{
                 type: "web_url",
-                url: "https://www.google.at/maps/place/Lanea/@48.1955122,16.3586215,16z/data=!4m5!3m4!1s0x0:0xa38cbe80be070add!8m2!3d48.1976849!4d16.36775",
+                url: "http://www.google.at/maps/place/Lanea/@48.1955122,16.3586215,16z/data=!4m5!3m4!1s0x0:0xa38cbe80be070add!8m2!3d48.1976849!4d16.36775",
                 title: "Location",
                 webview_height_ratio: "compact",
                 messenger_extensions: true
