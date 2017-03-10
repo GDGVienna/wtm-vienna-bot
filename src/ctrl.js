@@ -251,11 +251,20 @@ function getElement(item, i) {
         });
         subtitle = ", " + items.join(" & ");
     }
+    var buttons = null;
+    if (item.map_url !== undefined) {
+        buttons = [{
+            type: "web_url",
+            url: text.maps_url,
+            title: "Map",
+            webview_height_ratio: "compact"
+        }];
+    }    
     var element = {
         title: item.title,
         subtitle: time + subtitle,
         image_url: item.image_url,
-        buttons: null
+        buttons: buttons
     };
     return element;
 }
