@@ -1,0 +1,38 @@
+{
+  "setting_type": "call_to_actions",
+  "thread_state": "existing_thread",
+  "call_to_actions": [
+    {
+      "title": "Program",
+      "type": "nested",
+      "call_to_actions": [
+        {
+          "type": "postback",
+          "title": "Running now",
+          "payload": "action?now"
+        },
+        {
+          "type": "postback",
+          "title": "Coming next",
+          "payload": "action?next"
+        },
+        {
+          "type": "postback",
+          "title": "Afterparty",
+          "payload": "action?afterparty"
+        }
+      ]
+    },
+    {
+      "type": "postback",
+      "title": "Venue",
+      "payload": "action?venue"
+    },
+    {
+      "type": "web_url",
+      "title": "WTM Vienna",
+      "url": "http://womentechmakers.at/",
+      "webview_height_ratio": "compact"
+    }
+  ]
+}

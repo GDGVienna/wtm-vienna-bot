@@ -22,7 +22,7 @@ bot.beginDialogAction('menu', '/menu', { matches: /^menu/i });
 bot.beginDialogAction('now', '/now', { matches: /^now/i });
 bot.beginDialogAction('next', '/next', { matches: /^next/i });
 
-bot.endConversationAction('goodbye', , { matches: /^bye/i });
+bot.endConversationAction('goodbye', text.bye, { matches: /^bye/i });
 
 bot.dialog('/', function (session) {
     if (session.userData.firstRun === true) {
