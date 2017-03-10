@@ -5,10 +5,8 @@ var moment = require("moment");
 
 module.exports = {
     sendMenu: sendMenu,
-    sendItems: sendItems,
-    sendDescription: sendDescription
+    sendItems: sendItems
 }
-
 
 function sendMenu(session) {
     var start = moment(program.start, "YYYY-MM-DD HH:mm");
@@ -45,14 +43,21 @@ function sendMenu(session) {
             title: "Workshops",
             type: "postback",
             payload: "workshops"
-        }, {
+        }]
+    };
+    elements.push(programItems);
+    var schedule = {
+        title: "Schedule",
+        subtitle: "Full schedule on WTM site",
+        image_url: text.images.clock,
+        buttons: [{
             title: "Schedule",
             type: "web_url",
             url: text.links.schedule,
             webview_height_ratio: "compact"
         }]
     };
-    elements.push(programItems);
+    elements.push(schedule);
     var team = {
         title: "Team",
         subtitle: "Meet our team",
@@ -70,30 +75,6 @@ function sendMenu(session) {
         }]
     };
     elements.push(team);
-    //if (now.isAfter(start) && now.isBefore(end)) {
-    //var running = {
-    //    title: "What's running now?",
-    //    subtitle: null,
-    //    image_url: text.images.clock,
-    //    buttons: [{
-    //        title: "Show",
-    //        type: "postback",
-    //        payload: "next"
-    //    }]
-    //};
-    //elements.push(running);
-    //var next = {
-    //    title: "What's next?",
-    //    subtitle: null,
-    //    image_url: text.images.mech,
-    //    buttons: [{
-    //        title: "Show",
-    //        type: "postback",
-    //        payload: "now"
-    //    }]
-    //};
-    //elements.push(next);
-    //}
     if (now.isAfter(start) && now.isBefore(end)) {
         var venue = {
             title: "Venue",
@@ -199,30 +180,23 @@ function sendItems(session, type, running) {
 
 function getElement(item, i, day) {
     var time = moment(program.start, "YYYY-MM-DD HH:mm").format("H:mm");
-    var text = "";
+    var subtitle = "";
+    if (item.subtitle !== undefined) {
+        subtitle = ", " + item.subtitle;
+    }
     if (item.speakers !== undefined) {
-        var speakers = item.speakers.map(function (x) {
+        var items = item.speakers.map(function (x) {
             return x.name;
         });
-        text = ", " + speakers.join(" & ");
+        subtitle = ", " + items.join(" & ");
     }
     var element = {
         title: item.title,
-        subtitle: day + time + text,
+        subtitle: day + time + subtitle,
         image_url: item.image_url,
         buttons: null
     };
     return element;
-}
-
-function sendDescription(session) {
-    if (session.message.text.indexOf("_") !== -1) {
-        var idx = session.message.text.split("_")[1];
-        var item = program.items[idx];
-        var description = item.title.toUpperCase() + "\n\n" + item.description;
-        session.send(description);
-    }
-    sendQuickReplies(session, null, true);
 }
 
 function sendQuickReplies(session, error, back) {
@@ -232,7 +206,7 @@ function sendQuickReplies(session, error, back) {
     var replies = [];
     if (now.isAfter(start) && now.isBefore(end)) {
         var running = {
-            title: "Show",
+            title: "What's up now?",
             content_type: "text",
             payload: "now"
         };
@@ -240,7 +214,7 @@ function sendQuickReplies(session, error, back) {
     }
     if (now.isBefore(end)) {
         var next = {
-            title: "Show",
+            title: "What's next?",
             content_type: "text",
             payload: "next"
         };

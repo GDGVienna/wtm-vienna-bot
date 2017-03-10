@@ -21,15 +21,20 @@ bot.beginDialogAction('workshops', '/workshops', { matches: /^workshops/i });
 bot.beginDialogAction('menu', '/menu', { matches: /^menu/i });
 bot.beginDialogAction('now', '/now', { matches: /^now/i });
 bot.beginDialogAction('next', '/next', { matches: /^next/i });
-bot.beginDialogAction('description', '/description', { matches: /^description/i });
+
+bot.endConversationAction('goodbye', , { matches: /^bye/i });
 
 bot.dialog('/', function (session) {
-    session.send(text.hi);
-    session.sendTyping();
+    if (session.userData.firstRun === true) {
+        session.sendTyping();
+        session.send(text.hi);
+    } 
     session.beginDialog('/menu');
 });
 
 bot.dialog('/menu', function (session) {
+    session.sendTyping();
+    session.send(text.start);
     session.sendTyping();
     ctrl.sendMenu(session);
 });
@@ -54,7 +59,14 @@ bot.dialog('/next', function (session) {
     ctrl.sendItems(session, null, false);
 });
 
-bot.dialog('/description', function (session) {
-    session.sendTyping();
-    ctrl.sendDescription(session);
+bot.use({
+    botbuilder: function (session, callback) {
+        if (session.userData.firstRun === undefined) {
+            session.userData.firstRun = true;
+            session.beginDialog('/');
+        } else {
+            session.userData.firstRun = false;
+            callback();
+        }
+    }
 });

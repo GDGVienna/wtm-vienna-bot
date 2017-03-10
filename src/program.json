@@ -206,7 +206,9 @@
     },
     {
       "title": "Registration and Coffee",
+      "subtitle": "TU Wien, Gusshausstrasse 25-27, 1040 Vienna",
       "type": "break",
+      "map_url": "http://maps.google.com/maps?q=Gußhausstraße+25-27,Vienna,Austria",
       "image_url": "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.196861,16.368342&maptype=roadmap&zoom=17&markers=color:blue|label:A|48.196034,16.369640&markers=color:red|label:B|48.197705,16.367766&format=png&path=48.196432,16.369536|48.196533,16.369408|48.197219,16.369880|48.197577,16.367734",
       "start": "2017-03-11 09:00",
       "end": "2017-03-11 09:30"
@@ -227,7 +229,9 @@
     },
     {
       "title": "Awesome Afterparty!",
+      "subtitle": "Lanea, Rilkeplatz 3, 1040 Vienna",
       "type": "break",
+      "map_url": "http://maps.google.com/maps?q=Rilkeplatz+3,1040,Vienna,Austria",
       "image_url": "http://womentechmakers.at/img/other/party.png",
       "start": "2017-03-11 18:15",
       "end": "2017-03-11 23:00"

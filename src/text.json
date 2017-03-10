@@ -1,25 +1,11 @@
 ﻿{
-  "hi": "Hi, welcome to Women Techmakers Vienna!",
-  "start": "How can I help you?",
-  "bye": "Thanks for your interest in Women Techmakers Vienna!",
-  "syn": {
-    "yes": [ "yes", "sure", "ok" ],
-    "no": [ "no", "i'm good", "nah" ]
-  },
+  "hi": "Hi~! Welcome to Women Techmakers '17!",
+  "start": "How can I help you? :)",
+  "bye": "Thank you for your interest in Women Techmakers! <3 See you next year! ;)",
   "ask": "What do you want to do next?",
   "errors": {
-    "now": "There is nothing running right now.",
-    "next": "There are no upcoming sessions."
-  },
-  "emoticons": {
-    "robot": "🤖",
-    "search": "🔎",
-    "earth": "🌍",
-    "victoryhand": "✌",
-    "wavinghand": "👋",
-    "thumbsup": "👋",
-    "bulb": "💡",
-    "sweat_smile": "😄"
+    "now": "There is nothing running right now.. :O",
+    "next": "The event is over.. O:)"
   },
   "images": {
     "afterparty": "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.196861,16.368342&maptype=roadmap&zoom=17&markers=color:blue|label:A|48.196034,16.369640&markers=color:red|label:B|48.197705,16.367766&format=png&path=48.196432,16.369536|48.196533,16.369408|48.197219,16.369880|48.197577,16.367734",
@@ -49,5 +35,9 @@
     "organizers": "http://womentechmakers.at/team/",
     "schedule": "http://womentechmakers.at/schedule/",
     "speakers": "http://womentechmakers.at/speakers/"
+  },
+  "address": {
+    "event": "TU Wien, Gusshausstrasse 25-27, 1040 Vienna",
+    "afterparty": "Lanea, Rilkeplatz 3, 1040 Vienna"
   }
 }
