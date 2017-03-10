@@ -29,7 +29,7 @@ bot.endConversationAction('goodbye', text.bye, { matches: /^bye/i });
 
 bot.dialog('/', function (session) {
     session.sendTyping();
-    if (session.userData.firstRun === true) {
+    if (session.conversationData.firstRun === true) {
         session.send(text.hi);
     } else {
         session.send(text.back);
@@ -67,12 +67,6 @@ bot.dialog('/afterparty', function (session) {
 
 bot.use({
     botbuilder: function (session, callback) {
-        if (session.userData.firstRun === undefined) {
-            session.userData.firstRun = true;
-            session.beginDialog('/');
-        } else {
-            session.userData.firstRun = false;
-            callback();
-        }
+        session.conversationData.firstRun = (session.conversationData.firstRun === undefined);
     }
 });

@@ -1,25 +1,25 @@
 ﻿{
-  "hi": "Welcome to Women Techmakers Vienna. :D People of all genders are welcome to attend our event. The theme for this year is 'Telling Our Story'",
+  "hi": "Welcome to Women Techmakers Vienna! :D People of all genders are welcome to attend our event. The theme for this year is 'Telling Our Story'.",
   "back":  "Welcome back! :D",
   "bye": "Thank you for your interest in Women Techmakers! <3 See you next year! ;)",
-  "ask": "Anything else you want to know? :)",
+  "ask": "Anything else? :)",
   "info": {
-    "noRunning": "There is nothing running right now.. :O",
+    "noRunning": "There is nothing going on right now.. :O",
     "eventEnded": "Women Techmakers Vienna '17 is over.. O:)"
   },
   "labels": {
-    "menu": "Here is the event information:",
+    "menu": "Event information:",
     "presentations": "Inspiring presentations:",
     "workshops": "Creative workshops for kids and adults:",
-    "now": "Current sessions:",
-    "next": "Upcoming sessions:",
+    "now": "Currently running:",
+    "next": "Coming next:",
     "venue": "WTM Vienna '17 Event location:",
-    "afterparty": "Awesome Afterparty location:"
+    "afterparty": "Awesome Afterparty:"
   },
   "replies": {
-    "now": "Current sessions",
-    "next": "Next sessions",
-    "menu": "Back toeEvent info",
+    "now": "Now",
+    "next": "Next",
+    "menu": "Event info",
     "bye": "No, thanks."
   },
   "images": {
