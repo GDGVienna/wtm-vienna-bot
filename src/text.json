@@ -1,11 +1,20 @@
 ﻿{
-  "hi": "Welcome to Women Techmakers Vienna '17! :D",
-  "start": "How can I help you?",
+  "hi": "Welcome to Women Techmakers Vienna. :D People of all genders are welcome to attend our event. The theme for this year is 'Telling Our Story'",
+  "back":  "Welcome back! :D",
   "bye": "Thank you for your interest in Women Techmakers! <3 See you next year! ;)",
-  "ask": "What do you want to do next?",
-  "errors": {
-    "now": "There is nothing running right now.. :O",
-    "next": "The event is over.. O:)"
+  "ask": "Do you want to know something else? :)",
+  "info": {
+    "noRunning": "There is nothing running right now.. :O",
+    "eventEnded": "Women Techmakers Vienna '17 is over.. O:)"
+  },
+  "labels": {
+    "menu": "Here is the event information:",
+    "presentations": "Inspiring presentations:",
+    "workshops": "Creative workshops for kids and adults:",
+    "now": "Current sessions:",
+    "next": "Upcoming sessions:",
+    "venue": "WTM Vienna '17 Event location:",
+    "afterparty": "Awesome Afterparty location:"
   },
   "images": {
     "afterparty": "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.196861,16.368342&maptype=roadmap&zoom=17&markers=color:blue|label:A|48.196034,16.369640&markers=color:red|label:B|48.197705,16.367766&format=png&path=48.196432,16.369536|48.196533,16.369408|48.197219,16.369880|48.197577,16.367734",

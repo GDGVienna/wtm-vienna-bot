@@ -2,6 +2,7 @@ var builder = require('botbuilder');
 var ctrl = require('./src/ctrl')
 var restify = require('restify');
 var text = require("./src/text.json");
+var moment = require("moment");
 
 var server = restify.createServer();
 server.listen(process.env.port || process.env.PORT || 3978, function () {
@@ -22,53 +23,46 @@ bot.beginDialogAction('menu', '/menu', { matches: /^menu/i });
 bot.beginDialogAction('now', '/now', { matches: /^now/i });
 bot.beginDialogAction('next', '/next', { matches: /^next/i });
 bot.beginDialogAction('venue', '/venue', { matches: /^venue/i });
-bot.beginDialogAction('afterparty', '/afterparty', { matches: /^afterparty/i });
+bot.beginDialogAction('afterparty', '/afterparty', { matches: /^party/i });
 
 bot.endConversationAction('goodbye', text.bye, { matches: /^bye/i });
 
 bot.dialog('/', function (session) {
+    session.sendTyping();
     if (session.userData.firstRun === true) {
-        session.sendTyping();
         session.send(text.hi);
-    } 
+    } else {
+        session.send(text.back);
+    }
     session.beginDialog('/menu');
 });
 
 bot.dialog('/menu', function (session) {
-    session.sendTyping();
-    session.send(text.start);
-    session.sendTyping();
-    ctrl.sendMenu(session);
+    ctrl.sendMenu(session, text.labels.menu);
 });
 
 bot.dialog('/presentations', function (session) {
-    session.sendTyping();
-    ctrl.sendItems(session, "presentation");
+    ctrl.sendItems(session, "presentation", text.labels.presentations);
 });
 
 bot.dialog('/workshops', function (session) {
-    session.sendTyping();
-    ctrl.sendItems(session, "workshop");
+    ctrl.sendItems(session, "workshop", text.labels.workshops);
 });
 
 bot.dialog('/now', function (session) {
-    session.sendTyping();
-    ctrl.sendItems(session, null, true);
+    ctrl.sendItems(session, null, true, text.labels.now);
 });
 
 bot.dialog('/next', function (session) {
-    session.sendTyping();
-    ctrl.sendItems(session, null, false);
+    ctrl.sendItems(session, null, false, text.labels.next);
 });
 
 bot.dialog('/venue', function (session) {
-    session.sendTyping();
-    ctrl.sendVenu(session);
+    ctrl.sendVenue(session, text.labels.venue);
 });
 
 bot.dialog('/afterparty', function (session) {
-    session.sendTyping();
-    ctrl.sendAfterparty(session);
+    ctrl.sendAfterparty(session, text.labels.afterparty);
 });
 
 bot.use({

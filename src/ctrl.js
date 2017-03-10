@@ -7,22 +7,20 @@ module.exports = {
     sendMenu: sendMenu,
     sendItems: sendItems,
     sendMenu: sendMenu,
-    sendAfterparty: sendAfterparty
+    sendAfterparty: sendAfterparty,
+    sendVenue: sendVenue
 }
 
-function sendMenu(session) {
+function sendMenu(session, label) {
+    session.sendTyping();
     var start = moment(program.start, "YYYY-MM-DD HH:mm");
     var end = moment(program.end, "YYYY-MM-DD HH:mm");
     var now = moment();
     var elements = [];
-    var day = "";
-    if (now.startOf('day') < start.startOf('day')) {
-        day = start.format("D.MM") + ", ";
-    }
     if (now.isBefore(start)) {
         var registration = {
             title: "Registration and Coffee",
-            subtitle: day + "9:00, TU Wien, Gusshausstrasse 25-27, 1040 Vienna",
+            subtitle: "9:00, TU Wien, Gusshausstrasse 25-27, 1040 Vienna",
             image_url: text.images.event,
             buttons: [{
                 title: "Map",
@@ -94,7 +92,7 @@ function sendMenu(session) {
     if (!now.startOf('day').isAfter(start.startOf('day'))) {
         var afterparty = {
             title: "Awesome Afterparty!",
-            subtitle: day + "18:15, Lanea, Rilkeplatz 3, 1040 Vienna",
+            subtitle: "18:15, Lanea, Rilkeplatz 3, 1040 Vienna",
             image_url: text.images.afterparty,
             buttons: [{
                 type: "web_url",
@@ -117,15 +115,18 @@ function sendMenu(session) {
             }
         }
     };
+    session.send(label);
+    session.sendTyping();
     var msg = new builder.Message(session).sourceEvent(card);
     session.send(msg);
     sendQuickReplies(session, null, false);
 }
 
-function sendVenue(session) {
+function sendVenue(session, label) {
+    session.sendTyping();
     var element = {
-        title: "Venue",
-        subtitle: "TU Wien, Gusshausstrasse 25-27, 1040 Vienna",
+        title: "TU Vienna, New Electrotechnical Institute building",
+        subtitle: "Gusshausstrasse 25-27, 1040 Vienna",
         image_url: text.images.event,
         buttons: [{
             title: "Map",
@@ -146,15 +147,18 @@ function sendVenue(session) {
             }
         }
     };
+    session.send(label);
+    session.sendTyping();
     var msg = new builder.Message(session).sourceEvent(card);
     session.send(msg);
     sendQuickReplies(session, null, false);
 }
 
-function sendAfterparty(session) {
+function sendAfterparty(session, label) {
+    session.sendTyping();
     var element = {
-        title: "Awesome Afterparty!",
-        subtitle: day + "18:15, Lanea, Rilkeplatz 3, 1040 Vienna",
+        title: "Lanea",
+        subtitle: "18:15, Rilkeplatz 3, 1040 Vienna",
         image_url: text.images.afterparty,
         buttons: [{
             type: "web_url",
@@ -175,19 +179,18 @@ function sendAfterparty(session) {
             }
         }
     };
+    session.send(label);
+    session.sendTyping();
     var msg = new builder.Message(session).sourceEvent(card);
     session.send(msg);
     sendQuickReplies(session, null, false);
 }
 
-function sendItems(session, type, running) {
+function sendItems(session, type, running, label) {
+    session.sendTyping();
     var elements = [];
     var start = moment(program.start, "YYYY-MM-DD HH:mm");
     var now = moment();
-    var day = "";
-    if (now.startOf('day') < start.startOf('day')) {
-        day = start.format("D.MM") + " ";
-    }
     var items = [];
     if (type !== null) {
         for (var i = 0; i < program.items.length; i++) {
@@ -208,10 +211,10 @@ function sendItems(session, type, running) {
     } else if (running === false) {
         items = getNextItems();
     }
-    var error = null;
+    var info = null;
     if (items.length > 0) {
         for (var i = 0; i < items.length; i++) {
-            var element = getElement(items[i], i, day);
+            var element = getElement(items[i], i);
             elements.push(element);
         }
         var card = {
@@ -226,19 +229,21 @@ function sendItems(session, type, running) {
                 }
             }
         };
+        session.send(label);
+        session.sendTyping();
         var msg = new builder.Message(session).sourceEvent(card);
         session.send(msg);
     } else {
         if (running === false) {
-            error = text.errors.next;
+            info = text.info.eventEnded;
         } else if (running === true) {
-            error = text.errors.now;
+            info = text.info.noRunning;
         }
     }
-    sendQuickReplies(session, error, true);
+    sendQuickReplies(session, info, true);
 }
 
-function getElement(item, i, day) {
+function getElement(item, i) {
     var time = moment(item.start, "YYYY-MM-DD HH:mm").format("H:mm");
     var subtitle = "";
     if (item.subtitle !== undefined) {
@@ -252,14 +257,15 @@ function getElement(item, i, day) {
     }
     var element = {
         title: item.title,
-        subtitle: day + time + subtitle,
+        subtitle: time + subtitle,
         image_url: item.image_url,
         buttons: null
     };
     return element;
 }
 
-function sendQuickReplies(session, error, back) {
+function sendQuickReplies(session, info, back) {
+    session.sendTyping();
     var start = moment(program.start, "YYYY-MM-DD HH:mm");
     var end = moment(program.end, "YYYY-MM-DD HH:mm");
     var now = moment();
@@ -288,15 +294,18 @@ function sendQuickReplies(session, error, back) {
         };
         replies.push(menu);
     }
-    if (replies.length === 0) {
-        return;
-    }
-    if (error === null) {
-        error = text.ask;
+    var bye = {
+        title: "Bye-bye!",
+        content_type: "text",
+        payload: "bye"
+    };
+    replies.push(bye);
+    if (info === null) {
+        info = text.ask;
     }
     var card = {
         facebook: {
-            text: error,
+            text: info,
             quick_replies: replies
         }
     };
