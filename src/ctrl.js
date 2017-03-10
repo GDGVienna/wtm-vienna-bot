@@ -295,7 +295,7 @@ function sendQuickReplies(session, info, back) {
         replies.push(menu);
     }
     var bye = {
-        title: "Bye-bye!",
+        title: "No, thanks.",
         content_type: "text",
         payload: "bye"
     };
