@@ -3,7 +3,12 @@ var text = require("./text.json")
 var program = require("./program.json")
 var moment = require("moment");
 
-exports.sendMenu = function (session) {
+module.exports = {
+    sendMenu: sendMenu,
+    sendItems: sendItems
+}
+
+function sendMenu(session) {
     var start = moment(program.start, "YYYY-MM-DD HH:mm");
     var end = moment(program.end, "YYYY-MM-DD HH:mm");
     var now = moment();
@@ -112,36 +117,13 @@ exports.sendMenu = function (session) {
     session.send(msg);
 }
 
-exports.sendPresentations = function (session) {
+function sendItems(session, type) {
     var elements = [];
     for (var i = 0; i < program.items.length; i++) {
-        var item = program.items[i];
-        if (item.type !== "presentation") {
+        if (program.items[i].type !== type) {
             continue;
         }
-        var time = moment(program.start, "YYYY-MM-DD HH:mm").format("H:mm");
-        var buttons = [];        
-        var text = "";
-        if (item.speakers !== undefined) {
-            var speakers = item.speakers.map(function (x) {
-                return x.name;
-            });
-            text = ", " + speakers.join(" & ");
-            var action_name = "Speaker";
-            if (item.speakers.length > 1) {
-                action_name = "Speakers";
-            }
-            buttons.push(builder.CardAction.imBack(session, "speaker_" + i, action_name));
-        }
-        if (item.description !== undefined) {
-            buttons.push(builder.CardAction.imBack(session, "item_" + i, "More info"));
-        }
-        var element = {
-            title: item.title,
-            subtitle: time + text,
-            image_url: item.image_url,
-            buttons: buttons
-        };
+        var element = getElement(session, program.items[i], i);
         elements.push(element);
     }
     var card = {
@@ -160,115 +142,29 @@ exports.sendPresentations = function (session) {
     session.send(msg);
 }
 
-exports.sendProgram3 = function (session, k) {
-    var elements = [];
-    var cards = []
-    for (var i = 0; i < program.length; i++) {
-        var item = program[i];
-        var buttons = [];
-        if (item.description !== undefined) {
-            var button = {
-                title: 'More info',
-                type: 'postback',
-                payload: i + "_description"
-            };
-            buttons.push(button);
+function getElement(session, item, i) {
+    var time = moment(program.start, "YYYY-MM-DD HH:mm").format("H:mm");
+    var buttons = [];
+    var text = "";
+    if (item.speakers !== undefined) {
+        var speakers = item.speakers.map(function (x) {
+            return x.name;
+        });
+        text = ", " + speakers.join(" & ");
+        var action_name = "Speaker";
+        if (item.speakers.length > 1) {
+            action_name = "Speakers";
         }
-        var speakers = "";
-        if (item.speakers !== undefined) {
-            var names = item.speakers.map(function (x) {
-                return x.name;
-            });
-            speakers = names.join();
-            var title = "Speaker";
-            if (item.speakers.length > 1) {
-                title = "Speakers";
-            }
-            var button = {
-                title: title,
-                type: 'postback',
-                payload: i + "_speaker"
-            };
-            //buttons.push(button);
-        }
-        var image = null;
-        if (item.image !== undefined) {
-            image = item.image;
-        } else if (item.speakers !== undefined && item.speakers.length === 1) {
-            image = item.speakers[0].image;
-        }
-        var time = moment(item.start, "YYYY-MM-DD HH:mm").format('H:mm');
-        var element = {
-            title: item.name,
-            image_url: image,
-            subtitle: time + " " + speakers,
-            buttons: buttons
-        }
-        if (j)
-            elements.push(element);
+        buttons.push(builder.CardAction.imBack(session, "speaker_" + i, action_name));
     }
-
-    var card = {
-        facebook: {
-            attachment: {
-                type: "template",
-                payload: {
-                    template_type: "list",
-                    top_element_style: "compact",
-                    elements: elements
-                }
-            }
-        }
+    if (item.description !== undefined) {
+        buttons.push(builder.CardAction.imBack(session, "item_" + i, "More info"));
+    }
+    var element = {
+        title: item.title,
+        subtitle: time + text,
+        image_url: item.image_url,
+        buttons: buttons
     };
-    var msg = new builder.Message(session).sourceEvent(card);
-    session.send(msg);
-    // var attachments = [];
-    // for (var i = 0; i < program.length; i++) {
-    //     var item = program[i];
-    //     var buttons = [];
-    //     if (item.description !== undefined) {
-    //         buttons.push(builder.CardAction.imBack(session, i + "_description", "More info"));
-    //     }
-    //     var text = "";
-    //     if (item.speakers !== undefined) {
-    //         var speakers = item.speakers.map(function(x) {
-    //             return x.name;
-    //         });
-    //         text = speakers.join();
-    //         var action_name = "Speaker";
-    //         if (item.speakers.length > 1) {
-    //             action_name = "Speakers";
-    //         }
-    //         buttons.push(builder.CardAction.imBack(session, i + "_speaker", action_name));
-    //     }
-    //     var images = [];
-    //     if (item.image !== undefined) {
-    //         images.push(builder.CardImage.create(session, item.image));
-    //     } else if (item.speakers !== undefined) {
-    //         for (var j = 0; j < item.speakers.length; j++) {
-    //             images.push(builder.CardImage.create(session, item.speakers[j].image))
-    //         }
-    //     } else {
-    //         images.push(builder.CardImage.create(session, "https://www.womentechmakers.at/img/favicons/mstile-310x310.png"));
-    //     }
-    //     var time = moment(item.start, "YYYY-MM-DD HH:mm").format('H:mm');
-    //     var duration = moment.duration({'minutes' : item.duration});
-    //     var card = new builder.HeroCard(session)
-    //         .title(item.name)
-    //         .subtitle(time)
-    //         .text(text)
-    //         .buttons(buttons)
-    //         .images(images);
-
-    //     attachments.push(card);
-    // }
-    // var x = attachments;
-    // var reply = new builder.Message(session)
-    //     .attachmentLayout(builder.AttachmentLayout.carousel)
-    //     .attachments(attachments);
-    // session.send(reply);
-}
-
-exports.sendProgram4 = function (session) {
-
+    return element;
 }

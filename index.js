@@ -16,7 +16,8 @@ var bot = new builder.UniversalBot(connector, { persistConversationData: true })
 server.post('/api/messages', connector.listen());
 
 bot.beginDialogAction('hi', '/', { matches: /^\bhi\b|\bhello\b|\bhey\b|\bhallo\b/i });
-bot.beginDialogAction('presentations', '/presentations', { matches: /^\bpresentations\b/i });
+bot.beginDialogAction('pres', '/presentations', { matches: /^\bpresentations\b/i });
+bot.beginDialogAction('work', '/workshops', { matches: /^\bworkshops\b/i });
 
 bot.dialog('/', function (session) {
     var msg = "hi";
@@ -33,6 +34,12 @@ bot.dialog('/menu', function (session) {
 
 bot.dialog('/presentations', function (session) {
     session.sendTyping();
-    ctrl.sendPresentations(session);
+    ctrl.sendItems(session, "presentation");
+    session.endDialog();
+});
+
+bot.dialog('/workshops', function (session) {
+    session.sendTyping();
+    ctrl.sendItems(session, "workshop");
     session.endDialog();
 });
