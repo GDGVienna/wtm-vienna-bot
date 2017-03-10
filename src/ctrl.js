@@ -65,28 +65,28 @@ function sendMenu(session) {
     };
     elements.push(programItems);
     //if (now.isAfter(start) && now.isBefore(end)) {
-    var running = {
-        title: "What's running now?",
-        subtitle: null,
-        image_url: text.images.clock,
-        buttons: [{
-            title: "Show",
-            type: "postback",
-            payload: "next"
-        }]
-    };
-    elements.push(running);
-    var next = {
-        title: "What's next?",
-        subtitle: null,
-        image_url: text.images.mech,
-        buttons: [{
-            title: "Show",
-            type: "postback",
-            payload: "now"
-        }]
-    };
-    elements.push(next);
+    //var running = {
+    //    title: "What's running now?",
+    //    subtitle: null,
+    //    image_url: text.images.clock,
+    //    buttons: [{
+    //        title: "Show",
+    //        type: "postback",
+    //        payload: "next"
+    //    }]
+    //};
+    //elements.push(running);
+    //var next = {
+    //    title: "What's next?",
+    //    subtitle: null,
+    //    image_url: text.images.mech,
+    //    buttons: [{
+    //        title: "Show",
+    //        type: "postback",
+    //        payload: "now"
+    //    }]
+    //};
+    //elements.push(next);
     //}
     if (now.isAfter(start) && now.isBefore(end)) {
         var venue = {
@@ -130,6 +130,7 @@ function sendMenu(session) {
     };
     var msg = new builder.Message(session).sourceEvent(card);
     session.send(msg);
+    sendQuickReplies(session, false);
 }
 
 function sendItems(session, type) {
@@ -161,6 +162,7 @@ function sendItems(session, type) {
     };
     var msg = new builder.Message(session).sourceEvent(card);
     session.send(msg);
+    sendQuickReplies(session, true);
 }
 
 function getElement(item, i, day) {
@@ -196,6 +198,47 @@ function getElement(item, i, day) {
 function sendDescription(session) {
     var idx = session.message.text.split("_")[1];
     var item = program.items[idx];
-    var text = item.title.toUppercase() + "\n\n" + item.description;
+    var text = item.title.toUpperCase() + "\n\n" + item.description;
     session.send(text);
+    sendQuickReplies(session, true);
+}
+
+function sendQuickReplies(session, back) {
+    var start = moment(program.start, "YYYY-MM-DD HH:mm");
+    var end = moment(program.end, "YYYY-MM-DD HH:mm");
+    var now = moment();
+    var replies = [];
+    //if (now.isAfter(start) && now.isBefore(end)) {
+        var running = {
+            title: "Show",
+            content_type: "text",
+            payload: "now"
+        };
+        replies.push(running);
+        var next = {
+            title: "Show",
+            content_type: "text",
+            payload: "next"
+        };        
+        replies.push(next);
+    //}
+    if (back === true) {
+        var menu = {
+            title: "Back to menu",
+            content_type: "text",
+            payload: "menu"
+        };
+        replies.push(menu);
+    }
+    if (replies.length === 0) {
+        return;
+    }
+    var card = {
+        facebook: {
+            text: "What do you want to do next?",
+            quick_replies: replies
+        }
+    };
+    var msg = new builder.Message(session).sourceEvent(card);
+    session.send(msg);
 }
