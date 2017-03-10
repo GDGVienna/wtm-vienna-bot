@@ -27,28 +27,21 @@ function sendMenu(session) {
         };
         elements.push(registration);
     }
-    var presentations = {
-        title: "Presentations",
+    var programItems = {
+        title: "Program",
         subtitle: null,
-        image_url: text.images.mic2,
+        image_url: text.images.logo,
         buttons: [{
-            title: "See all",
+            title: "Presentations",
             type: "postback",
             payload: "presentations"
-        }]
-    };
-    elements.push(presentations);
-    var workshops = {
-        title: "Workshops",
-        subtitle: null,
-        image_url: text.images.lego,
-        buttons: [{
-            title: "See all",
+        }, {
+            title: "Workshops",
             type: "postback",
             payload: "workshops"
         }]
     };
-    elements.push(workshops);
+    elements.push(programItems);
     //if (now.isAfter(start) && now.isBefore(end)) {
     var running = {
         title: "What's running now?",

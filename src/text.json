@@ -32,7 +32,8 @@
     "clock": "http://womentechmakers.at/img/sections-background/schedule.jpg",
     "stat": "http://womentechmakers.at/img/sections-background/statistic.jpg",
     "memo2": "http://womentechmakers.at/img/sections-background/subscribe.jpg",
-    "mech": "http://womentechmakers.at/img/sections-background/team.jpg"
+    "mech": "http://womentechmakers.at/img/sections-background/team.jpg",
+    "logo": "http://womentechmakers.at/img/favicons/mstile-310x310.png"
   },
   "maps": {
     "event": "http://maps.google.com/maps?q=Gußhausstraße+25-27,Vienna,Austria",
