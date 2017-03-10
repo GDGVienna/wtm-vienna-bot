@@ -42,11 +42,11 @@ bot.dialog('/menu', function (session) {
 });
 
 bot.dialog('/presentations', function (session) {
-    ctrl.sendItems(session, "presentation", text.labels.presentations);
+    ctrl.sendItems(session, "presentation", false, text.labels.presentations);
 });
 
 bot.dialog('/workshops', function (session) {
-    ctrl.sendItems(session, "workshop", text.labels.workshops);
+    ctrl.sendItems(session, "workshop", false, text.labels.workshops);
 });
 
 bot.dialog('/now', function (session) {
