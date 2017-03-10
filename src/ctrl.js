@@ -5,18 +5,25 @@ var moment = require("moment");
 
 module.exports = {
     sendMenu: sendMenu,
-    sendItems: sendItems
+    sendItems: sendItems,
+    sendSpeaker: sendSpeaker,
+    sendDescription: sendDescription
 }
+
 
 function sendMenu(session) {
     var start = moment(program.start, "YYYY-MM-DD HH:mm");
     var end = moment(program.end, "YYYY-MM-DD HH:mm");
     var now = moment();
     var elements = [];
+    var day = "";
+    if (now.startOf('day') < start.startOf('day')) {
+        day = start.format("D.MM") + ", ";
+    }
     if (now.isBefore(start)) {
         var registration = {
             title: "Registration and Coffee",
-            subtitle: "9:00, TU Wien, Gusshausstrasse 25-27, 1040 Vienna",
+            subtitle: day + "9:00, TU Wien, Gusshausstrasse 25-27, 1040 Vienna",
             image_url: text.images.event,
             buttons: [{
                 title: "Map",
@@ -83,7 +90,7 @@ function sendMenu(session) {
     if (!now.startOf('day').isAfter(start.startOf('day'))) {
         var afterparty = {
             title: "Awesome Afterparty!",
-            subtitle: "18:15, Lanea, Rilkeplatz 3, 1040 Vienna",
+            subtitle: day + "18:15, Lanea, Rilkeplatz 3, 1040 Vienna",
             image_url: text.images.afterparty,
             buttons: [{
                 type: "web_url",
@@ -112,11 +119,17 @@ function sendMenu(session) {
 
 function sendItems(session, type) {
     var elements = [];
+    var start = moment(program.start, "YYYY-MM-DD HH:mm");
+    var now = moment();
+    var day = "";
+    if (now.startOf('day') < start.startOf('day')) {
+        day = start.format("D.MM") + ", ";
+    }
     for (var i = 0; i < program.items.length; i++) {
         if (program.items[i].type !== type) {
             continue;
         }
-        var element = getElement(program.items[i], i);
+        var element = getElement(program.items[i], i, day);
         elements.push(element);
     }
     var card = {
@@ -135,7 +148,7 @@ function sendItems(session, type) {
     session.send(msg);
 }
 
-function getElement(item, i) {
+function getElement(item, i, day) {
     var time = moment(program.start, "YYYY-MM-DD HH:mm").format("H:mm");
     var buttons = [];
     var text = "";
@@ -159,11 +172,69 @@ function getElement(item, i) {
         }
         buttons.push(button);
     }
+    if (buttons.length === 0) {
+        buttons = null;
+    }
     var element = {
         title: item.title,
-        subtitle: time + text,
+        subtitle: day + time + text,
         image_url: item.image_url,
         buttons: buttons
     };
     return element;
+}
+
+function sendSpeaker(session) {
+    var elements = [];
+    var idx = session.message.text.split("_")[1];
+    var speakers = program.items[idx].speakers;
+    for (var i = 0; i < speakers.length; i++) {
+        var item = speakers[i];
+        var element = {
+            title: item.name,
+            subtitle: item.bio,
+            image_url: item.image_url,
+            buttons: buttons
+        };
+        elements.push(element);
+    }
+    var card = {
+        facebook: {
+            attachment: {
+                type: "template",
+                image_aspect_ratio: "square",
+                payload: {
+                    template_type: "generic",
+                    elements: elements
+                }
+            }
+        }
+    };
+    var msg = new builder.Message(session).sourceEvent(card);
+    session.send(msg);
+}
+
+function sendDescription(session) {
+    var idx = session.message.text.split("_")[1];
+    var item = program.items[idx];
+    var element = {
+        title: item.title,
+        subtitle: item.description,
+        image_url: item.image_url,
+        buttons: buttons
+    };
+    var card = {
+        facebook: {
+            attachment: {
+                type: "template",
+                image_aspect_ratio: "square",
+                payload: {
+                    template_type: "generic",
+                    elements: [element]
+                }
+            }
+        }
+    };
+    var msg = new builder.Message(session).sourceEvent(card);
+    session.send(msg);
 }
