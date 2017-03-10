@@ -6,7 +6,6 @@ var moment = require("moment");
 module.exports = {
     sendMenu: sendMenu,
     sendItems: sendItems,
-    sendSpeaker: sendSpeaker,
     sendDescription: sendDescription
 }
 
@@ -46,6 +45,22 @@ function sendMenu(session) {
             title: "Workshops",
             type: "postback",
             payload: "workshops"
+        }]
+    };
+    var programItems = {
+        title: "Team",
+        subtitle: null,
+        image_url: text.images.memo1,
+        buttons: [{
+            title: "Organizers",
+            type: "web_url",
+            url: text.links.organizers,
+            webview_height_ratio: "compact"
+        }, {
+            title: "Speakers",
+            type: "web_url",
+            url: text.links.speakers,
+            webview_height_ratio: "compact"
         }]
     };
     elements.push(programItems);
@@ -156,22 +171,7 @@ function getElement(item, i, day) {
         var speakers = item.speakers.map(function (x) {
             return x.name;
         });
-        text = ", " + speakers.join(" & ");
-        var btnTitle;        
-        if (item.type === "presentation") {
-            btnTitle = "Speaker";
-        } else {
-            btnTitle = "Teacher";
-        }
-        if (speakers.length > 0) {
-            btnTitle += "s";
-        }
-        var button = {
-            title: btnTitle,
-            type: "postback",
-            payload: "speaker_" + i
-        }
-        buttons.push(button);
+        text = ", " + speakers.join(" & ");        
     }
     if (item.description !== undefined) {
         var button = {
@@ -193,57 +193,9 @@ function getElement(item, i, day) {
     return element;
 }
 
-function sendSpeaker(session) {
-    var elements = [];
-    var idx = session.message.text.split("_")[1];
-    var speakers = program.items[idx].speakers;
-    for (var i = 0; i < speakers.length; i++) {
-        var item = speakers[i];
-        var element = {
-            title: item.name,
-            subtitle: item.bio,
-            image_url: item.image_url,
-            buttons: null
-        };
-        elements.push(element);
-    }
-    var card = {
-        facebook: {
-            attachment: {
-                type: "template",
-                image_aspect_ratio: "square",
-                payload: {
-                    template_type: "generic",
-                    elements: elements
-                }
-            }
-        }
-    };
-    var msg = new builder.Message(session).sourceEvent(card);
-    session.send(msg);
-}
-
 function sendDescription(session) {
     var idx = session.message.text.split("_")[1];
     var item = program.items[idx];
-    var element = {
-        title: item.title,
-        subtitle: item.description,
-        image_url: item.image_url,
-        buttons: null
-    };
-    var card = {
-        facebook: {
-            attachment: {
-                type: "template",
-                image_aspect_ratio: "square",
-                payload: {
-                    template_type: "generic",
-                    elements: [element]
-                }
-            }
-        }
-    };
-    var msg = new builder.Message(session).sourceEvent(card);
-    session.send(msg);
+    var text = item.title.toUppercase() + "\n\n" + item.description;
+    session.send(text);
 }

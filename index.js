@@ -21,7 +21,6 @@ bot.beginDialogAction('workshops', '/workshops', { matches: /^workshops/i });
 bot.beginDialogAction('menu', '/menu', { matches: /^menu/i });
 bot.beginDialogAction('now', '/now', { matches: /^now/i });
 bot.beginDialogAction('next', '/next', { matches: /^next/i });
-bot.beginDialogAction('speaker', '/speaker', { matches: /^speaker/i });
 bot.beginDialogAction('description', '/description', { matches: /^description/i });
 
 bot.dialog('/', function (session) {
@@ -53,11 +52,6 @@ bot.dialog('/now', function (session) {
 bot.dialog('/next', function (session) {
     session.sendTyping();
     ctrl.sendNext(session);
-});
-
-bot.dialog('/speaker', function (session) {
-    session.sendTyping();
-    ctrl.sendSpeaker(session);
 });
 
 bot.dialog('/description', function (session) {

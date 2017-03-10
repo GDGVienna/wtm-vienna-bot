@@ -38,5 +38,9 @@
   "maps": {
     "event": "http://maps.google.com/maps?q=Gußhausstraße+25-27,Vienna,Austria",
     "afterparty": "http://maps.google.com/maps?q=Rilkeplatz+3,1040,Vienna,Austria"
-  } 
+  },
+  "links": {
+    "organizers": "http://womentechmakers.at/team/",
+    "speakers": "http://womentechmakers.at/speakers/"
+  }
 }
