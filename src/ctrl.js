@@ -255,7 +255,7 @@ function getElement(item, i) {
     if (item.map_url !== undefined) {
         buttons = [{
             type: "web_url",
-            url: text.maps_url,
+            url: item.maps_url,
             title: "Map",
             webview_height_ratio: "compact"
         }];
