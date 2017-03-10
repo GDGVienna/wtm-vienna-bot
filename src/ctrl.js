@@ -116,7 +116,6 @@ function sendMenu(session, label) {
         }
     };
     session.send(label);
-    session.sendTyping();
     var msg = new builder.Message(session).sourceEvent(card);
     session.send(msg);
     sendQuickReplies(session, null, false);
@@ -148,7 +147,6 @@ function sendVenue(session, label) {
         }
     };
     session.send(label);
-    session.sendTyping();
     var msg = new builder.Message(session).sourceEvent(card);
     session.send(msg);
     sendQuickReplies(session, null, false);
@@ -180,7 +178,6 @@ function sendAfterparty(session, label) {
         }
     };
     session.send(label);
-    session.sendTyping();
     var msg = new builder.Message(session).sourceEvent(card);
     session.send(msg);
     sendQuickReplies(session, null, false);
@@ -230,7 +227,6 @@ function sendItems(session, type, running, label) {
             }
         };
         session.send(label);
-        session.sendTyping();
         var msg = new builder.Message(session).sourceEvent(card);
         session.send(msg);
     } else {
@@ -265,7 +261,6 @@ function getElement(item, i) {
 }
 
 function sendQuickReplies(session, info, back) {
-    session.sendTyping();
     var start = moment(program.start, "YYYY-MM-DD HH:mm");
     var end = moment(program.end, "YYYY-MM-DD HH:mm");
     var now = moment();
