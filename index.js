@@ -21,6 +21,8 @@ bot.beginDialogAction('workshops', '/workshops', { matches: /^workshops/i });
 bot.beginDialogAction('menu', '/menu', { matches: /^menu/i });
 bot.beginDialogAction('now', '/now', { matches: /^now/i });
 bot.beginDialogAction('next', '/next', { matches: /^next/i });
+bot.beginDialogAction('venue', '/venue', { matches: /^venue/i });
+bot.beginDialogAction('afterparty', '/afterparty', { matches: /^afterparty/i });
 
 bot.endConversationAction('goodbye', text.bye, { matches: /^bye/i });
 
@@ -57,6 +59,16 @@ bot.dialog('/now', function (session) {
 bot.dialog('/next', function (session) {
     session.sendTyping();
     ctrl.sendItems(session, null, false);
+});
+
+bot.dialog('/venue', function (session) {
+    session.sendTyping();
+    ctrl.sendVenu(session);
+});
+
+bot.dialog('/afterparty', function (session) {
+    session.sendTyping();
+    ctrl.sendAfterparty(session);
 });
 
 bot.use({

@@ -5,7 +5,9 @@ var moment = require("moment");
 
 module.exports = {
     sendMenu: sendMenu,
-    sendItems: sendItems
+    sendItems: sendItems,
+    sendMenu: sendMenu,
+    sendAfterparty: sendAfterparty
 }
 
 function sendMenu(session) {
@@ -120,6 +122,64 @@ function sendMenu(session) {
     sendQuickReplies(session, null, false);
 }
 
+function sendVenue(session) {
+    var element = {
+        title: "Venue",
+        subtitle: "TU Wien, Gusshausstrasse 25-27, 1040 Vienna",
+        image_url: text.images.event,
+        buttons: [{
+            title: "Map",
+            type: "web_url",
+            url: text.maps.event,
+            webview_height_ratio: "compact"
+        }]
+    };
+    var card = {
+        facebook: {
+            attachment: {
+                type: "template",
+                image_aspect_ratio: "square",
+                payload: {
+                    template_type: "generic",
+                    elements: [element]
+                }
+            }
+        }
+    };
+    var msg = new builder.Message(session).sourceEvent(card);
+    session.send(msg);
+    sendQuickReplies(session, null, false);
+}
+
+function sendAfterparty(session) {
+    var element = {
+        title: "Awesome Afterparty!",
+        subtitle: day + "18:15, Lanea, Rilkeplatz 3, 1040 Vienna",
+        image_url: text.images.afterparty,
+        buttons: [{
+            type: "web_url",
+            url: text.maps.afterparty,
+            title: "Map",
+            webview_height_ratio: "compact"
+        }]
+    };
+    var card = {
+        facebook: {
+            attachment: {
+                type: "template",
+                image_aspect_ratio: "square",
+                payload: {
+                    template_type: "generic",
+                    elements: [element]
+                }
+            }
+        }
+    };
+    var msg = new builder.Message(session).sourceEvent(card);
+    session.send(msg);
+    sendQuickReplies(session, null, false);
+}
+
 function sendItems(session, type, running) {
     var elements = [];
     var start = moment(program.start, "YYYY-MM-DD HH:mm");
@@ -179,7 +239,7 @@ function sendItems(session, type, running) {
 }
 
 function getElement(item, i, day) {
-    var time = moment(program.start, "YYYY-MM-DD HH:mm").format("H:mm");
+    var time = moment(item.start, "YYYY-MM-DD HH:mm").format("H:mm");
     var subtitle = "";
     if (item.subtitle !== undefined) {
         subtitle = ", " + item.subtitle;
@@ -206,7 +266,7 @@ function sendQuickReplies(session, error, back) {
     var replies = [];
     if (now.isAfter(start) && now.isBefore(end)) {
         var running = {
-            title: "What's up now?",
+            title: "Running now",
             content_type: "text",
             payload: "now"
         };
@@ -214,7 +274,7 @@ function sendQuickReplies(session, error, back) {
     }
     if (now.isBefore(end)) {
         var next = {
-            title: "What's next?",
+            title: "Coming next",
             content_type: "text",
             payload: "next"
         };

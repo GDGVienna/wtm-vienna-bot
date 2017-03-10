@@ -1,38 +1,42 @@
 {
-  "setting_type": "call_to_actions",
-  "thread_state": "existing_thread",
-  "call_to_actions": [
+  "persistent_menu": [
     {
-      "title": "Program",
-      "type": "nested",
+      "locale": "default",
+      "composer_input_disabled": true,
       "call_to_actions": [
         {
-          "type": "postback",
-          "title": "Running now",
-          "payload": "action?now"
+          "title": "Program",
+          "type": "nested",
+          "call_to_actions": [
+            {
+              "type": "postback",
+              "title": "Now",
+              "payload": "action?now"
+            },
+            {
+              "type": "postback",
+              "title": "Next",
+              "payload": "action?next"
+            },
+            {
+              "type": "postback",
+              "title": "Afterparty",
+              "payload": "action?afterparty"
+            }
+          ]
         },
         {
           "type": "postback",
-          "title": "Coming next",
-          "payload": "action?next"
+          "title": "Venue",
+          "payload": "action?venue"
         },
         {
-          "type": "postback",
-          "title": "Afterparty",
-          "payload": "action?afterparty"
+          "type": "web_url",
+          "title": "WTM Vienna",
+          "url": "http://womentechmakers.at/",
+          "webview_height_ratio": "compact"
         }
       ]
-    },
-    {
-      "type": "postback",
-      "title": "Venue",
-      "payload": "action?venue"
-    },
-    {
-      "type": "web_url",
-      "title": "WTM Vienna",
-      "url": "http://womentechmakers.at/",
-      "webview_height_ratio": "compact"
     }
   ]
 }
