@@ -135,7 +135,7 @@ function sendItems(session, type) {
     session.send(msg);
 }
 
-function getElement(session, item, i) {
+function getElement(item, i) {
     var time = moment(program.start, "YYYY-MM-DD HH:mm").format("H:mm");
     var buttons = [];
     var text = "";
@@ -144,14 +144,15 @@ function getElement(session, item, i) {
             return x.name;
         });
         text = ", " + speakers.join(" & ");
-        var action_name = "Speaker";
-        if (item.speakers.length > 1) {
-            action_name = "Speakers";
+        var button = {
+            title: "Speakers",
+            type: "postback",
+            payload: "program_speaker"
         }
-        buttons.push(builder.CardAction.imBack(session, "speaker_" + i, action_name));
+        buttons.push(button);
     }
     if (item.description !== undefined) {
-        buttons.push(builder.CardAction.imBack(session, "item_" + i, "More info"));
+        buttons.push(builder.CardAction.imBack(session, "program_item", "More info", i));
     }
     var element = {
         title: item.title,

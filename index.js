@@ -16,9 +16,11 @@ var bot = new builder.UniversalBot(connector, { persistConversationData: true })
 server.post('/api/messages', connector.listen());
 
 bot.beginDialogAction('hi', '/', { matches: /^\bhi\b|\bhello\b|\bhey\b|\bhallo\b/i });
-bot.beginDialogAction('presentations', '/presentations');
-bot.beginDialogAction('workshops', '/workshops');
-bot.beginDialogAction('menu', '/menu');
+bot.beginDialogAction('presentations', '/presentations', { matches: /^presentations/i });
+bot.beginDialogAction('workshops', '/workshops', { matches: /^workshops/i });
+bot.beginDialogAction('menu', '/menu', { matches: /^menu/i });
+bot.beginDialogAction('now', '/now', { matches: /^now/i });
+bot.beginDialogAction('next', '/next', { matches: /^next/i });
 
 bot.dialog('/', function (session) {
     session.send(text.hi);
@@ -29,17 +31,24 @@ bot.dialog('/', function (session) {
 bot.dialog('/menu', function (session) {
     session.sendTyping();
     ctrl.sendMenu(session);
-    session.endDialog();
 });
 
 bot.dialog('/presentations', function (session) {
     session.sendTyping();
     ctrl.sendItems(session, "presentation");
-    session.endDialog();
 });
 
 bot.dialog('/workshops', function (session) {
     session.sendTyping();
     ctrl.sendItems(session, "workshop");
-    session.endDialog();
+});
+
+bot.dialog('/now', function (session) {
+    session.sendTyping();
+    ctrl.sendItems(session, "workshop");
+});
+
+bot.dialog('/next', function (session) {
+    session.sendTyping();
+    ctrl.sendItems(session, "workshop");
 });
