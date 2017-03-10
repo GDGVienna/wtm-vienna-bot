@@ -35,7 +35,7 @@ function sendMenu(session) {
     }
     var programItems = {
         title: "Program",
-        subtitle: null,
+        subtitle: "Check our program",
         image_url: text.images.wtm,
         buttons: [{
             title: "Presentations",
@@ -45,11 +45,17 @@ function sendMenu(session) {
             title: "Workshops",
             type: "postback",
             payload: "workshops"
+        }, {
+            title: "Schedule",
+            type: "web_url",
+            url: text.links.schedule,
+            webview_height_ratio: "compact"
         }]
     };
-    var programItems = {
+    elements.push(programItems);
+    var team = {
         title: "Team",
-        subtitle: null,
+        subtitle: "Meet our team",
         image_url: text.images.memo1,
         buttons: [{
             title: "Organizers",
@@ -63,7 +69,7 @@ function sendMenu(session) {
             webview_height_ratio: "compact"
         }]
     };
-    elements.push(programItems);
+    elements.push(team);
     //if (now.isAfter(start) && now.isBefore(end)) {
     //var running = {
     //    title: "What's running now?",
@@ -139,7 +145,7 @@ function sendItems(session, type, running) {
     var now = moment();
     var day = "";
     if (now.startOf('day') < start.startOf('day')) {
-        day = start.format("D.MM") + ", ";
+        day = start.format("D.MM") + " ";
     }
     var items = [];
     if (type !== null) {
@@ -193,7 +199,6 @@ function sendItems(session, type, running) {
 
 function getElement(item, i, day) {
     var time = moment(program.start, "YYYY-MM-DD HH:mm").format("H:mm");
-    var buttons = [];
     var text = "";
     if (item.speakers !== undefined) {
         var speakers = item.speakers.map(function (x) {
@@ -201,31 +206,22 @@ function getElement(item, i, day) {
         });
         text = ", " + speakers.join(" & ");
     }
-    if (item.description !== undefined) {
-        var button = {
-            title: "Description",
-            type: "postback",
-            payload: "descrition_" + i
-        }
-        buttons.push(button);
-    }
-    if (buttons.length === 0) {
-        buttons = null;
-    }
     var element = {
         title: item.title,
         subtitle: day + time + text,
         image_url: item.image_url,
-        buttons: buttons
+        buttons: null
     };
     return element;
 }
 
 function sendDescription(session) {
-    var idx = session.message.text.split("_")[1];
-    var item = program.items[idx];
-    var description = item.title.toUpperCase() + "\n\n" + item.description;
-    session.send(description);
+    if (session.message.text.indexOf("_") !== -1) {
+        var idx = session.message.text.split("_")[1];
+        var item = program.items[idx];
+        var description = item.title.toUpperCase() + "\n\n" + item.description;
+        session.send(description);
+    }
     sendQuickReplies(session, null, true);
 }
 
@@ -262,7 +258,7 @@ function sendQuickReplies(session, error, back) {
         return;
     }
     if (error === null) {
-        msg = text.ask;
+        error = text.ask;
     }
     var card = {
         facebook: {
