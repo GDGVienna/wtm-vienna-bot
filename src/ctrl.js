@@ -45,28 +45,28 @@ exports.sendMenu = function (session) {
     };
     elements.push(workshops);
     //if (now.isAfter(start) && now.isBefore(end)) {
-        var running = {
-            title: "What's running now?",
-            subtitle: null,
-            image_url: text.images.clock,
-            buttons: [{
-                title: "Show",
-                type: "postback",
-                payload: "next"
-            }]
-        };
-        elements.push(running);
-        var next = {
-            title: "What's next?",
-            subtitle: null,
-            image_url: text.images.mech,
-            buttons: [{
-                title: "Show",
-                type: "postback",
-                payload: "now"
-            }]
-        };
-        elements.push(next);
+    var running = {
+        title: "What's running now?",
+        subtitle: null,
+        image_url: text.images.clock,
+        buttons: [{
+            title: "Show",
+            type: "postback",
+            payload: "next"
+        }]
+    };
+    elements.push(running);
+    var next = {
+        title: "What's next?",
+        subtitle: null,
+        image_url: text.images.mech,
+        buttons: [{
+            title: "Show",
+            type: "postback",
+            payload: "now"
+        }]
+    };
+    elements.push(next);
     //}
     if (now.isAfter(start) && now.isBefore(end)) {
         var venue = {
@@ -96,43 +96,7 @@ exports.sendMenu = function (session) {
         };
         elements.push(afterparty);
     }
-    var card =  {
-        facebook: {
-            attachment: {
-                type: "template",
-                image_aspect_ratio: "square",
-                payload: {
-                    template_type: "generic", 
-                    elements: elements
-                }
-            }
-        }
-    };
-    var msg = new builder.Message(session).sourceEvent(card);
-    session.send(msg);
-}
-
-exports.sendProgram = function(session) {
-    var elements = [];
-    for (var i = 0; i < 10; i++) {
-        var item = program[i];
-        var element = {
-            title: item.title,
-            subtitle: "subtitle",
-            image_url: "http://www.womentechmakers.at/img/favicons/mstile-310x310.png",
-            buttons: [{
-                title: "Speakers",
-                type: "postback",
-                payload: "test"
-            }, {
-                title: "More info",
-                type: "postback",
-                payload: "test"
-            }]
-        };
-        elements.push(element);
-    }
-    var card =  {
+    var card = {
         facebook: {
             attachment: {
                 type: "template",
@@ -148,7 +112,55 @@ exports.sendProgram = function(session) {
     session.send(msg);
 }
 
-exports.sendProgram3 = function(session, k) {
+exports.sendPresentations = function (session) {
+    var elements = [];
+    for (var i = 0; i < program.items.length; i++) {
+        var item = program.items[i];
+        if (item.type !== "presentation") {
+            continue;
+        }
+        var time = moment(program.start, "YYYY-MM-DD HH:mm").format("H:mm");
+        var buttons = [];        
+        var text = "";
+        if (item.speakers !== undefined) {
+            var speakers = item.speakers.map(function (x) {
+                return x.name;
+            });
+            text = ", " + speakers.join(" & ");
+            var action_name = "Speaker";
+            if (item.speakers.length > 1) {
+                action_name = "Speakers";
+            }
+            buttons.push(builder.CardAction.imBack(session, "speaker_" + i, action_name));
+        }
+        if (item.description !== undefined) {
+            buttons.push(builder.CardAction.imBack(session, "item_" + i, "More info"));
+        }
+        var element = {
+            title: item.title,
+            subtitle: time + text,
+            image_url: item.image_url,
+            buttons: buttons
+        };
+        elements.push(element);
+    }
+    var card = {
+        facebook: {
+            attachment: {
+                type: "template",
+                image_aspect_ratio: "square",
+                payload: {
+                    template_type: "generic",
+                    elements: elements
+                }
+            }
+        }
+    };
+    var msg = new builder.Message(session).sourceEvent(card);
+    session.send(msg);
+}
+
+exports.sendProgram3 = function (session, k) {
     var elements = [];
     var cards = []
     for (var i = 0; i < program.length; i++) {
@@ -164,7 +176,7 @@ exports.sendProgram3 = function(session, k) {
         }
         var speakers = "";
         if (item.speakers !== undefined) {
-            var names = item.speakers.map(function(x) {
+            var names = item.speakers.map(function (x) {
                 return x.name;
             });
             speakers = names.join();
@@ -184,7 +196,7 @@ exports.sendProgram3 = function(session, k) {
             image = item.image;
         } else if (item.speakers !== undefined && item.speakers.length === 1) {
             image = item.speakers[0].image;
-        } 
+        }
         var time = moment(item.start, "YYYY-MM-DD HH:mm").format('H:mm');
         var element = {
             title: item.name,
@@ -193,10 +205,10 @@ exports.sendProgram3 = function(session, k) {
             buttons: buttons
         }
         if (j)
-        elements.push(element);
+            elements.push(element);
     }
 
-    var card =  {
+    var card = {
         facebook: {
             attachment: {
                 type: "template",
@@ -247,7 +259,7 @@ exports.sendProgram3 = function(session, k) {
     //         .text(text)
     //         .buttons(buttons)
     //         .images(images);
-        
+
     //     attachments.push(card);
     // }
     // var x = attachments;
@@ -257,6 +269,6 @@ exports.sendProgram3 = function(session, k) {
     // session.send(reply);
 }
 
-exports.sendProgram4 = function(session) {
-    
+exports.sendProgram4 = function (session) {
+
 }
