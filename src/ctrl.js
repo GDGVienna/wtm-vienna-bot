@@ -157,8 +157,17 @@ function getElement(item, i, day) {
             return x.name;
         });
         text = ", " + speakers.join(" & ");
+        var btnTitle;        
+        if (item.type === "presentation") {
+            btnTitle = "Speaker";
+        } else {
+            btnTitle = "Teacher";
+        }
+        if (speakers.length > 0) {
+            btnTitle += "s";
+        }
         var button = {
-            title: "Speakers",
+            title: btnTitle,
             type: "postback",
             payload: "speaker_" + i
         }
@@ -166,7 +175,7 @@ function getElement(item, i, day) {
     }
     if (item.description !== undefined) {
         var button = {
-            title: "More info",
+            title: "Description",
             type: "postback",
             payload: "descrition_" + i
         }
@@ -194,7 +203,7 @@ function sendSpeaker(session) {
             title: item.name,
             subtitle: item.bio,
             image_url: item.image_url,
-            buttons: buttons
+            buttons: null
         };
         elements.push(element);
     }
@@ -221,7 +230,7 @@ function sendDescription(session) {
         title: item.title,
         subtitle: item.description,
         image_url: item.image_url,
-        buttons: buttons
+        buttons: null
     };
     var card = {
         facebook: {
