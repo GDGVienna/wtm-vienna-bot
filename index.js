@@ -68,5 +68,6 @@ bot.dialog('/afterparty', function (session) {
 bot.use({
     botbuilder: function (session, callback) {
         session.conversationData.firstRun = (session.conversationData.firstRun === undefined);
+        callback();
     }
 });
