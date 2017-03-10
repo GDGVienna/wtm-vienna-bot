@@ -116,7 +116,7 @@ function sendItems(session, type) {
         if (program.items[i].type !== type) {
             continue;
         }
-        var element = getElement(session, program.items[i], i);
+        var element = getElement(program.items[i], i);
         elements.push(element);
     }
     var card = {
@@ -147,12 +147,17 @@ function getElement(item, i) {
         var button = {
             title: "Speakers",
             type: "postback",
-            payload: "program_speaker"
+            payload: "speaker_" + i
         }
         buttons.push(button);
     }
     if (item.description !== undefined) {
-        buttons.push(builder.CardAction.imBack(session, "program_item", "More info", i));
+        var button = {
+            title: "More info",
+            type: "postback",
+            payload: "descrition_" + i
+        }
+        buttons.push(button);
     }
     var element = {
         title: item.title,
