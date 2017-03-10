@@ -16,6 +16,12 @@
     "venue": "WTM Vienna '17 Event location:",
     "afterparty": "Awesome Afterparty location:"
   },
+  "replies": {
+    "now": "Current sessions",
+    "next": "Next sessions",
+    "menu": "Back toeEvent info",
+    "bye": "No, thanks."
+  },
   "images": {
     "afterparty": "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.196861,16.368342&maptype=roadmap&zoom=17&markers=color:blue|label:A|48.196034,16.369640&markers=color:red|label:B|48.197705,16.367766&format=png&path=48.196432,16.369536|48.196533,16.369408|48.197219,16.369880|48.197577,16.367734",
     "event": "http://maps.google.com/maps/api/staticmap?size=640x480&sensor=false&center=48.195978,16.368770&maptype=roadmap&zoom=18&markers=48.196034,16.369640&format=png",

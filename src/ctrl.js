@@ -267,7 +267,7 @@ function sendQuickReplies(session, info, back) {
     var replies = [];
     if (now.isAfter(start) && now.isBefore(end)) {
         var running = {
-            title: "Running now",
+            title: text.replies.now,
             content_type: "text",
             payload: "now"
         };
@@ -275,7 +275,7 @@ function sendQuickReplies(session, info, back) {
     }
     if (now.isBefore(end)) {
         var next = {
-            title: "Coming next",
+            title: text.replies.next,
             content_type: "text",
             payload: "next"
         };
@@ -283,14 +283,14 @@ function sendQuickReplies(session, info, back) {
     }
     if (back === true) {
         var menu = {
-            title: "Back to menu",
+            title: text.replies.menu,
             content_type: "text",
             payload: "menu"
         };
         replies.push(menu);
     }
     var bye = {
-        title: "No, thanks.",
+        title: text.replies.bye,
         content_type: "text",
         payload: "bye"
     };
