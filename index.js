@@ -46,12 +46,12 @@ bot.dialog('/workshops', function (session) {
 
 bot.dialog('/now', function (session) {
     session.sendTyping();
-    ctrl.sendNow(session);
+    ctrl.sendItems(session, null, true);
 });
 
 bot.dialog('/next', function (session) {
     session.sendTyping();
-    ctrl.sendNext(session);
+    ctrl.sendItems(session, null, false);
 });
 
 bot.dialog('/description', function (session) {

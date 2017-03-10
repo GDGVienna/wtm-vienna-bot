@@ -130,10 +130,10 @@ function sendMenu(session) {
     };
     var msg = new builder.Message(session).sourceEvent(card);
     session.send(msg);
-    sendQuickReplies(session, false);
+    sendQuickReplies(session, null, false);
 }
 
-function sendItems(session, type) {
+function sendItems(session, type, running) {
     var elements = [];
     var start = moment(program.start, "YYYY-MM-DD HH:mm");
     var now = moment();
@@ -141,28 +141,54 @@ function sendItems(session, type) {
     if (now.startOf('day') < start.startOf('day')) {
         day = start.format("D.MM") + ", ";
     }
-    for (var i = 0; i < program.items.length; i++) {
-        if (program.items[i].type !== type) {
-            continue;
-        }
-        var element = getElement(program.items[i], i, day);
-        elements.push(element);
-    }
-    var card = {
-        facebook: {
-            attachment: {
-                type: "template",
-                image_aspect_ratio: "square",
-                payload: {
-                    template_type: "generic",
-                    elements: elements
-                }
+    var items = [];
+    if (type !== null) {
+        for (var i = 0; i < program.items.length; i++) {
+            var item = program.items[i];
+            if (program.items[i].type.indexOf(type) !== -1) {
+                items.push(item);
             }
         }
-    };
-    var msg = new builder.Message(session).sourceEvent(card);
-    session.send(msg);
-    sendQuickReplies(session, true);
+    } else if (running === true) {
+        for (var i = 0; i < program.items.length; i++) {
+            var item = program.items[i];
+            var itemStart = moment(item.start, "YYYY-MM-DD HH:mm");
+            var itemEnd = moment(item.end, "YYYY-MM-DD HH:mm");
+            if (now > itemStart && now < itemEnd) {
+                items.push(item);
+            }
+        }
+    } else if (running === false) {
+        items = getNextItems();
+    }
+    var error = null;
+    if (items.length > 0) {
+        for (var i = 0; i < items.length; i++) {
+            var element = getElement(items[i], i, day);
+            elements.push(element);
+        }
+        var card = {
+            facebook: {
+                attachment: {
+                    type: "template",
+                    image_aspect_ratio: "square",
+                    payload: {
+                        template_type: "generic",
+                        elements: elements
+                    }
+                }
+            }
+        };
+        var msg = new builder.Message(session).sourceEvent(card);
+        session.send(msg);
+    } else {
+        if (running === false) {
+            error = text.errors.next;
+        } else if (running === true) {
+            error = text.errors.now;
+        }
+    }
+    sendQuickReplies(session, error, true);
 }
 
 function getElement(item, i, day) {
@@ -173,7 +199,7 @@ function getElement(item, i, day) {
         var speakers = item.speakers.map(function (x) {
             return x.name;
         });
-        text = ", " + speakers.join(" & ");        
+        text = ", " + speakers.join(" & ");
     }
     if (item.description !== undefined) {
         var button = {
@@ -198,30 +224,32 @@ function getElement(item, i, day) {
 function sendDescription(session) {
     var idx = session.message.text.split("_")[1];
     var item = program.items[idx];
-    var text = item.title.toUpperCase() + "\n\n" + item.description;
-    session.send(text);
-    sendQuickReplies(session, true);
+    var description = item.title.toUpperCase() + "\n\n" + item.description;
+    session.send(description);
+    sendQuickReplies(session, null, true);
 }
 
-function sendQuickReplies(session, back) {
+function sendQuickReplies(session, error, back) {
     var start = moment(program.start, "YYYY-MM-DD HH:mm");
     var end = moment(program.end, "YYYY-MM-DD HH:mm");
     var now = moment();
     var replies = [];
-    //if (now.isAfter(start) && now.isBefore(end)) {
+    if (now.isAfter(start) && now.isBefore(end)) {
         var running = {
             title: "Show",
             content_type: "text",
             payload: "now"
         };
         replies.push(running);
+    }
+    if (now.isBefore(end)) {
         var next = {
             title: "Show",
             content_type: "text",
             payload: "next"
-        };        
+        };
         replies.push(next);
-    //}
+    }
     if (back === true) {
         var menu = {
             title: "Back to menu",
@@ -233,12 +261,45 @@ function sendQuickReplies(session, back) {
     if (replies.length === 0) {
         return;
     }
+    if (error === null) {
+        msg = text.ask;
+    }
     var card = {
         facebook: {
-            text: "What do you want to do next?",
+            text: error,
             quick_replies: replies
         }
     };
     var msg = new builder.Message(session).sourceEvent(card);
     session.send(msg);
+}
+
+function getNextItems() {
+    var now = moment();
+    var type = "";
+    var nextItems = [];
+    var nextBreak;
+    var nextStart = moment(program.end, "YYYY-MM-DD HH:mm");
+    var breakStart;
+    for (var i = 0; i < program.items.length; i++) {
+        var item = program.items[i];
+        var itemStart = moment(item.start, "YYYY-MM-DD HH:mm");
+        if (item.type !== type && itemStart > now) {
+            if (itemStart.isBefore(nextStart)) {
+                nextStart = itemStart;
+            }
+            type = item.type;
+            if (type === "break") {
+                breakStart = itemStart;
+                nextBreak = item;
+            } else {
+                nextItems.push(item);
+            }            
+        }
+    }
+    if (nextBreak !== undefined && nextStart.isSame(breakStart)) {
+        return [nextBreak];
+    } else {
+        return nextItems;
+    }
 }

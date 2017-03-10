@@ -6,6 +6,11 @@
     "yes": [ "yes", "sure", "ok" ],
     "no": [ "no", "i'm good", "nah" ]
   },
+  "ask": "What do you want to do next?",
+  "errors": {
+    "now": "There is nothing running right now.",
+    "next": "There are no upcoming sessions."
+  },
   "emoticons": {
     "robot": "🤖",
     "search": "🔎",
@@ -33,7 +38,8 @@
     "stat": "http://womentechmakers.at/img/sections-background/statistic.jpg",
     "memo2": "http://womentechmakers.at/img/sections-background/subscribe.jpg",
     "mech": "http://womentechmakers.at/img/sections-background/team.jpg",
-    "wtm": "http://www.austrianstartups.com/wp-content/uploads/2015/10/women_tech_meetup.jpg"
+    "wtm": "http://www.austrianstartups.com/wp-content/uploads/2015/10/women_tech_meetup.jpg",
+    "beer": "http://womentechmakers.at/img/other/party.png"
   },
   "maps": {
     "event": "http://maps.google.com/maps?q=Gußhausstraße+25-27,Vienna,Austria",

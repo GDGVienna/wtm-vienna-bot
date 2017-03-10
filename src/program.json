@@ -126,7 +126,7 @@
     },
     {
       "title": "My first computer game with TouchDevelop",
-      "type": "workshop",
+      "type": "kids_workshop",
       "description": "In this workshop we will learn what programming is and how you have to think when you want to develop computer games. We will work together on a computer game, so that by the end of the workshop you have created your own version of a game similar to Flappy Bird. Of course, making a game also means playing it! Who will fly the longest in the end?",
       "speakers": [
         {
@@ -141,6 +141,22 @@
       "image_url": "http://az820584.vo.msecnd.net/pub/bjogmzoy",
       "start": "2017-03-11 09:30",
       "end": "2017-03-11 12:30"
+    },
+    {
+      "title": "code! - draw! - stitch!",
+      "type": "kids_workshop",
+      "description": "Turtlestitch is based on a modified Snap!, a web-based graphic programming tool similar to Scratch. The modification enables to use the pen tool to generate patterns that can be read by embroidery machines. Thus it brings together the abstract logic of programming with the material logic of textiles.\nDuring the workshop, the participants will be instructed to design a pattern and how to materialize this pattern as embroidery on a textile. You can bring your own T-shirts (at your own risk) or use textiles provided.",
+      "speakers": [
+        {
+          "name": "Andrea Mayr-Stalder",
+          "image_url": "http://www.womentechmakers.at/img/people/AndreaMayr-Stalder.jpg",
+          "bio": "Since the late 1990s, Andrea has worked on numerous artistic and educational Internet projects. She studied visual media (University of Applied Arts; Vienna) and has worked as a system admin and programmer at ISPs in Vienna and New York. Much of her work involves Free Software and she was chairwomen of the LinuxWochen, Vienna. Most recently, she initiated Turtlestitch.org, a platform to combine computing and embroidery."
+        }
+      ],
+      "language": "English",
+      "image_url": "http://www.turtlestitch.org/media/img/ts_vis3.png",
+      "start": "2017-03-11 13:30",
+      "end": "2017-03-11 15:45"
     },
     {
       "title": "Workshop: LEGO - this game is serious",
@@ -164,22 +180,6 @@
       "image_url": "http://womentechmakers.at/img/other/lego.jpg",
       "start": "2017-03-11 09:45",
       "end": "2017-03-11 11:15"
-    },
-    {
-      "title": "code! - draw! - stitch!",
-      "type": "workshop",
-      "description": "Turtlestitch is based on a modified Snap!, a web-based graphic programming tool similar to Scratch. The modification enables to use the pen tool to generate patterns that can be read by embroidery machines. Thus it brings together the abstract logic of programming with the material logic of textiles.\nDuring the workshop, the participants will be instructed to design a pattern and how to materialize this pattern as embroidery on a textile. You can bring your own T-shirts (at your own risk) or use textiles provided.",
-      "speakers": [
-        {
-          "name": "Andrea Mayr-Stalder",
-          "image_url": "http://www.womentechmakers.at/img/people/AndreaMayr-Stalder.jpg",
-          "bio": "Since the late 1990s, Andrea has worked on numerous artistic and educational Internet projects. She studied visual media (University of Applied Arts; Vienna) and has worked as a system admin and programmer at ISPs in Vienna and New York. Much of her work involves Free Software and she was chairwomen of the LinuxWochen, Vienna. Most recently, she initiated Turtlestitch.org, a platform to combine computing and embroidery."
-        }
-      ],
-      "language": "English",
-      "image_url": "http://www.turtlestitch.org/media/img/ts_vis3.png",
-      "start": "2017-03-11 13:30",
-      "end": "2017-03-11 15:45"
     },
     {
       "title": "Workshop: LEGO - this game is serious",
@@ -224,6 +224,13 @@
       "image_url": "http://womentechmakers.at/img/other/coffeebreak.jpg",
       "start": "2017-03-11 15:45",
       "end": "2017-03-11 16:15"
+    },
+    {
+      "title": "Awesome Afterparty!",
+      "type": "break",
+      "image_url": "http://womentechmakers.at/img/other/party.png",
+      "start": "2017-03-11 18:15",
+      "end": "2017-03-11 23:00"
     }
   ]
 }
