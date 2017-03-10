@@ -1,5 +1,5 @@
 ﻿{
-  "hi": "Hi {user}, welcome to Women Techmakers Vienna!",
+  "hi": "Hi, welcome to Women Techmakers Vienna!",
   "start": "How can I help you?",
   "bye": "Thanks for your interest in Women Techmakers Vienna!",
   "syn": {
@@ -33,7 +33,7 @@
     "stat": "http://womentechmakers.at/img/sections-background/statistic.jpg",
     "memo2": "http://womentechmakers.at/img/sections-background/subscribe.jpg",
     "mech": "http://womentechmakers.at/img/sections-background/team.jpg",
-    "logo": "http://womentechmakers.at/img/favicons/mstile-310x310.png"
+    "wtm": "http://www.austrianstartups.com/wp-content/uploads/2015/10/women_tech_meetup.jpg"
   },
   "maps": {
     "event": "http://maps.google.com/maps?q=Gußhausstraße+25-27,Vienna,Austria",

@@ -16,12 +16,12 @@ var bot = new builder.UniversalBot(connector, { persistConversationData: true })
 server.post('/api/messages', connector.listen());
 
 bot.beginDialogAction('hi', '/', { matches: /^\bhi\b|\bhello\b|\bhey\b|\bhallo\b/i });
-bot.beginDialogAction('pres', '/presentations', { matches: /^\bpresentations\b/i });
-bot.beginDialogAction('work', '/workshops', { matches: /^\bworkshops\b/i });
+bot.beginDialogAction('presentations', '/presentations');
+bot.beginDialogAction('workshops', '/workshops');
+bot.beginDialogAction('menu', '/menu');
 
 bot.dialog('/', function (session) {
-    var msg = "hi";
-    session.send(msg);
+    session.send(text.hi);
     session.sendTyping();
     session.beginDialog('/menu');
 });

@@ -30,7 +30,7 @@ function sendMenu(session) {
     var programItems = {
         title: "Program",
         subtitle: null,
-        image_url: text.images.logo,
+        image_url: text.images.wtm,
         buttons: [{
             title: "Presentations",
             type: "postback",
