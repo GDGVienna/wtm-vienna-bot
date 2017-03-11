@@ -2,9 +2,9 @@ var builder = require('botbuilder');
 var text = require("./text.json")
 var program = require("./program.json")
 var moment = require("moment-timezone");
-moment().tz("Europe/Vienna").format();
 
 var dateFormat = "YYYY-MM-DD HH:mm";
+var timezone = "Europe/Vienna";
 
 module.exports = {
     sendMenu: sendMenu,
@@ -16,9 +16,10 @@ module.exports = {
 
 function sendMenu(session, label) {
     session.sendTyping();
-    var start = moment(program.start, "YYYY-MM-DD HH:mm");
-    var end = moment(program.end, "YYYY-MM-DD HH:mm");
-    var now = moment(moment().format(dateFormat), dateFormat);
+    var start = getDate(program.start);
+    var end = getDate(program.end)
+    var now = getNow();
+;
     var elements = [];
     if (now.isBefore(start)) {
         var registration = {
@@ -92,7 +93,7 @@ function sendMenu(session, label) {
         };
         elements.push(venue);
     }
-    if (!now.startOf('day').isAfter(start.startOf('day'))) {
+    //if (!now.startOf('day').isAfter(start.startOf('day'))) {
         var afterparty = {
             title: "Awesome Afterparty!",
             subtitle: "18:15, Lanea, Rilkeplatz 3, 1040 Vienna",
@@ -105,7 +106,7 @@ function sendMenu(session, label) {
             }]
         };
         elements.push(afterparty);
-    }
+    //}
     var card = {
         facebook: {
             attachment: {
@@ -189,8 +190,8 @@ function sendAfterparty(session, label) {
 function sendItems(session, type, running, label) {
     session.sendTyping();
     var elements = [];
-    var start = moment(program.start, "YYYY-MM-DD HH:mm");
-    var now = moment(moment().format(dateFormat), dateFormat);
+    var start = getDate(program.start);
+    var now = getNow();
     var items = [];
     if (type !== null) {
         for (var i = 0; i < program.items.length; i++) {
@@ -202,8 +203,8 @@ function sendItems(session, type, running, label) {
     } else if (running === true) {
         for (var i = 0; i < program.items.length; i++) {
             var item = program.items[i];
-            var itemStart = moment(item.start, "YYYY-MM-DD HH:mm");
-            var itemEnd = moment(item.end, "YYYY-MM-DD HH:mm");
+            var itemStart = getDate(item.start);
+            var itemEnd = getDate(item.end);
             if (now > itemStart && now < itemEnd) {
                 items.push(item);
             }
@@ -243,7 +244,7 @@ function sendItems(session, type, running, label) {
 }
 
 function getElement(item, i) {
-    var time = moment(item.start, "YYYY-MM-DD HH:mm").format("H:mm");
+    var time = getTime(item.start);
     var subtitle = "";
     if (item.subtitle !== undefined) {
         subtitle = ", " + item.subtitle;
@@ -273,9 +274,9 @@ function getElement(item, i) {
 }
 
 function sendQuickReplies(session, info, back) {
-    var start = moment(program.start, "YYYY-MM-DD HH:mm");
-    var end = moment(program.end, "YYYY-MM-DD HH:mm");
-    var now = moment(moment().format(dateFormat), dateFormat);
+    var start = getDate(program.start);
+    var end = getDate(program.end);
+    var now = getNow();
     var replies = [];
     if (now.isAfter(start) && now.isBefore(end)) {
         var running = {
@@ -321,15 +322,15 @@ function sendQuickReplies(session, info, back) {
 }
 
 function getNextItems() {
-    var now = moment(moment().format(dateFormat), dateFormat);
+    var now = getNow();
     var type = "";
     var nextItems = [];
     var nextBreak;
-    var nextStart = moment(program.end, "YYYY-MM-DD HH:mm");
+    var nextStart = getDate(program.end);
     var breakStart;
     for (var i = 0; i < program.items.length; i++) {
         var item = program.items[i];
-        var itemStart = moment(item.start, "YYYY-MM-DD HH:mm");
+        var itemStart = getDate(item.start);
         if (item.type !== type && itemStart > now) {
             if (itemStart.isBefore(nextStart)) {
                 nextStart = itemStart;
@@ -348,4 +349,16 @@ function getNextItems() {
     } else {
         return nextItems;
     }
+}
+
+function getDate(time) {
+    return moment.tz(time, timezone);
+}
+
+function getTime(time) {
+    return moment.tz(time, timezone).format("H:mm");
+}
+
+function getNow() {
+    return moment().tz(timezone);
 }
