@@ -20,6 +20,7 @@ bot.beginDialogAction('hi', '/', { matches: /^\bhi\b|\bhello\b|\bhey\b|\bhallo\b
 bot.beginDialogAction('presentations', '/presentations', { matches: /^presentations/i });
 bot.beginDialogAction('workshops', '/workshops', { matches: /^workshops/i });
 bot.beginDialogAction('menu', '/menu', { matches: /^menu/i });
+bot.beginDialogAction('info', '/menu', { matches: /^info/i });
 bot.beginDialogAction('now', '/now', { matches: /^now/i });
 bot.beginDialogAction('next', '/next', { matches: /^next/i });
 bot.beginDialogAction('venue', '/venue', { matches: /^venue/i });
