@@ -3,7 +3,7 @@ var text = require("./text.json")
 var program = require("./program.json")
 var moment = require("moment");
 
-var dateFormta = "YYYY-MM-DD HH:mm";
+var dateFormat = "YYYY-MM-DD HH:mm";
 
 module.exports = {
     sendMenu: sendMenu,
