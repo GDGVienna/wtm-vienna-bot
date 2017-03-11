@@ -353,7 +353,7 @@ function getNextItems() {
             }
         }
         sessions.push(nextBreak);
-        return [sessions];
+        return sessions;
     } else {        
         return nextItems;
     }
