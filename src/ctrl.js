@@ -1,7 +1,8 @@
 var builder = require('botbuilder');
 var text = require("./text.json")
 var program = require("./program.json")
-var moment = require("moment");
+var moment = require("moment-timezone");
+moment().tz("Europe/Vienna").format();
 
 var dateFormat = "YYYY-MM-DD HH:mm";
 
