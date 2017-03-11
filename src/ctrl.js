@@ -3,6 +3,8 @@ var text = require("./text.json")
 var program = require("./program.json")
 var moment = require("moment");
 
+var dateFormta = "YYYY-MM-DD HH:mm";
+
 module.exports = {
     sendMenu: sendMenu,
     sendItems: sendItems,
@@ -15,7 +17,7 @@ function sendMenu(session, label) {
     session.sendTyping();
     var start = moment(program.start, "YYYY-MM-DD HH:mm");
     var end = moment(program.end, "YYYY-MM-DD HH:mm");
-    var now = moment();
+    var now = moment(moment().format(dateFormat), dateFormat);
     var elements = [];
     if (now.isBefore(start)) {
         var registration = {
@@ -187,7 +189,7 @@ function sendItems(session, type, running, label) {
     session.sendTyping();
     var elements = [];
     var start = moment(program.start, "YYYY-MM-DD HH:mm");
-    var now = moment();
+    var now = moment(moment().format(dateFormat), dateFormat);
     var items = [];
     if (type !== null) {
         for (var i = 0; i < program.items.length; i++) {
@@ -272,24 +274,24 @@ function getElement(item, i) {
 function sendQuickReplies(session, info, back) {
     var start = moment(program.start, "YYYY-MM-DD HH:mm");
     var end = moment(program.end, "YYYY-MM-DD HH:mm");
-    var now = moment();
+    var now = moment(moment().format(dateFormat), dateFormat);
     var replies = [];
-    if (now.isAfter(start) && now.isBefore(end)) {
+    //if (now.isAfter(start) && now.isBefore(end)) {
         var running = {
             title: text.replies.now,
             content_type: "text",
             payload: "now"
         };
         replies.push(running);
-    }
-    if (now.isBefore(end)) {
+    //}
+    //if (now.isBefore(end)) {
         var next = {
             title: text.replies.next,
             content_type: "text",
             payload: "next"
         };
         replies.push(next);
-    }
+    //}
     if (back === true) {
         var menu = {
             title: text.replies.menu,
@@ -318,7 +320,7 @@ function sendQuickReplies(session, info, back) {
 }
 
 function getNextItems() {
-    var now = moment();
+    var now = moment(moment().format(dateFormat), dateFormat);
     var type = "";
     var nextItems = [];
     var nextBreak;

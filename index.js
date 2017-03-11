@@ -36,7 +36,7 @@ bot.dialog('/', function (session) {
         session.send(text.back);
     }
     session.beginDialog('/menu');
-});
+});    
 
 bot.dialog('/menu', function (session) {
     ctrl.sendMenu(session, text.labels.menu);
