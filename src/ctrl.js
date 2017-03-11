@@ -276,22 +276,22 @@ function sendQuickReplies(session, info, back) {
     var end = moment(program.end, "YYYY-MM-DD HH:mm");
     var now = moment(moment().format(dateFormat), dateFormat);
     var replies = [];
-    //if (now.isAfter(start) && now.isBefore(end)) {
+    if (now.isAfter(start) && now.isBefore(end)) {
         var running = {
             title: text.replies.now,
             content_type: "text",
             payload: "now"
         };
         replies.push(running);
-    //}
-    //if (now.isBefore(end)) {
+    }
+    if (now.isBefore(end)) {
         var next = {
             title: text.replies.next,
             content_type: "text",
             payload: "next"
         };
         replies.push(next);
-    //}
+    }
     if (back === true) {
         var menu = {
             title: text.replies.menu,
