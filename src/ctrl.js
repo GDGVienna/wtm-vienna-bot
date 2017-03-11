@@ -327,7 +327,6 @@ function getNextItems() {
     var nextItems = [];
     var nextBreak;
     var nextStart = getDate(program.end);
-    var breakStart;
     for (var i = 0; i < program.items.length; i++) {
         var item = program.items[i];
         var itemStart = getDate(item.start);
@@ -337,16 +336,25 @@ function getNextItems() {
             }
             type = item.type;
             if (type === "break") {
-                breakStart = itemStart;
                 nextBreak = item;
             } else {
                 nextItems.push(item);
             }            
         }
     }
-    if (nextBreak !== undefined && nextStart.isSame(breakStart)) {
-        return [nextBreak];
-    } else {
+    if (nextBreak !== undefined) {
+        var sessions = [];
+        var breakEnd = getDate(nextBreak.end);
+        for (var i = 0; i < nextItems.length; i++) {
+            var item = nextItems[i];
+            var itemStart = getDate(item.start);
+            if (itemStart < breakEnd) {
+                sessions.push(item);
+            }
+        }
+        sessions.push(nextBreak);
+        return [sessions];
+    } else {        
         return nextItems;
     }
 }
